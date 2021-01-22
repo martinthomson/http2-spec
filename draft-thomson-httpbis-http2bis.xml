@@ -3992,7 +3992,7 @@
         <t>
           This document establishes a registry for HTTP/2 settings.  The "HTTP/2 Settings" registry
           manages a 16-bit space.  The "HTTP/2 Settings" registry operates under the <xref target="RFC5226">"Expert Review" policy</xref> for values in the range from 0x0000 to
-          0xefff, with values between and 0xf000 and 0xffff being reserved for Experimental Use.
+          0xefff, with values between 0xf000 and 0xffff being reserved for Experimental Use.
         </t>
         <t>
           New registrations are advised to provide the following information:
