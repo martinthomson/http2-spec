@@ -1,0 +1,595 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2020-10-29T00:18:08.494354+00:00",
+  "repo": "martinthomson/http2v2",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "id": "MDU6SXNzdWU2ODc4NjUwMzQ=",
+      "title": "Update HTML5 reference",
+      "url": "https://github.com/martinthomson/http2v2/issues/1",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "The current reference is in the WHATWG \"infra standard\": https://infra.spec.whatwg.org/#tracking-vector\r\n\r\nTo use this, we need to ask for the \"tracking-vector\" anchor to be made permanent.",
+      "createdAt": "2020-08-28T07:17:37Z",
+      "updatedAt": "2020-08-31T07:02:14Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 2,
+      "id": "MDU6SXNzdWU2OTU0NTI2Mjg=",
+      "title": "Remove upgrade mechanism",
+      "url": "https://github.com/martinthomson/http2v2/issues/2",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "This has not been implemented, so can likely go.",
+      "createdAt": "2020-09-08T00:17:08Z",
+      "updatedAt": "2020-10-22T13:35:51Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "wtarreau",
+          "authorAssociation": "NONE",
+          "body": "And with this, both \"3.4.  Starting HTTP/2 with Prior Knowledge\" and \"3.5.  HTTP/2 Connection Preface\" should be reworded to make it clear that the preface explicitly allows a server or intermediary to implement both HTTP/1.1 and H2 on the same cleartext port. Right now it only speaks about supporting it over \"TCP\" (letting one think on a dedicated port) and suggests that the preface avoids accidental processing by HTTP/1. Instead this should be worded in a way that makes it clear that an HTTP/1.1 server that detects the preface can safely switch to H2.",
+          "createdAt": "2020-09-08T02:53:36Z",
+          "updatedAt": "2020-09-08T02:53:36Z"
+        },
+        {
+          "author": "essen",
+          "authorAssociation": "NONE",
+          "body": "I have implemented h2c in client and server, though only the direct knowledge method in client. I'm not sure how many people rely on it. At least a few. It's also very useful for development and testing.\r\n\r\nI would suggest leaving it in but indicate that it is not recommended and/or historical.",
+          "createdAt": "2020-09-08T08:21:32Z",
+          "updatedAt": "2020-09-08T08:21:32Z"
+        },
+        {
+          "author": "wtarreau",
+          "authorAssociation": "NONE",
+          "body": "Martin was speaking about removing only the upgrade mechanism, not the prior-knowledge one, which is absolutely essential, I agree, and about every server implements it. I think the upgrade can be classed as historic, just like RFC2817 that I'm not sure many implementations support.",
+          "createdAt": "2020-09-08T08:31:40Z",
+          "updatedAt": "2020-09-08T08:31:40Z"
+        },
+        {
+          "author": "essen",
+          "authorAssociation": "NONE",
+          "body": "Ah that makes more sense, thanks. Sounds good.",
+          "createdAt": "2020-09-08T08:39:47Z",
+          "updatedAt": "2020-09-08T08:39:47Z"
+        },
+        {
+          "author": "martinthomson",
+          "authorAssociation": "OWNER",
+          "body": "Yeah, I don't think that we can retract the registration of the ALPN identifier either.",
+          "createdAt": "2020-09-09T00:38:27Z",
+          "updatedAt": "2020-09-09T00:38:27Z"
+        },
+        {
+          "author": "wtarreau",
+          "authorAssociation": "NONE",
+          "body": "I think you're right, given that for now we basically say \"you must not accept h2c in ALPN\", so removing it is even simpler!",
+          "createdAt": "2020-09-11T18:32:01Z",
+          "updatedAt": "2020-09-11T18:32:01Z"
+        },
+        {
+          "author": "LPardue",
+          "authorAssociation": "NONE",
+          "body": "Remove this please, there's evidence that it's being used for smuggling when implemented/configured improperly: https://labs.bishopfox.com/tech-blog/h2c-smuggling-request-smuggling-via-http/2-cleartext-h2c",
+          "createdAt": "2020-10-22T13:35:12Z",
+          "updatedAt": "2020-10-22T13:35:51Z"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "MDU6SXNzdWU2OTU0NTMwNzU=",
+      "title": "Cut priorities",
+      "url": "https://github.com/martinthomson/http2v2/issues/3",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "This probably needs a skeleton left over so that we can avoid interoperability problems that might arise from interactions with peers that still have them.  There are some MUST-level requirements around parsing that would need to be identified and marked.",
+      "createdAt": "2020-09-08T00:18:28Z",
+      "updatedAt": "2020-09-21T11:08:51Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "yoavweiss",
+          "authorAssociation": "NONE",
+          "body": "I don't think we should cut priorities without a very strong reason, as they are successfully implemented by multiple implementers (even if for H3 we choose to go with a simpler scheme). Is there such a reason?",
+          "createdAt": "2020-09-21T11:08:51Z",
+          "updatedAt": "2020-09-21T11:08:51Z"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "MDU6SXNzdWU2OTU0NTMyODY=",
+      "title": "Integrate TLS 1.3",
+      "url": "https://github.com/martinthomson/http2v2/issues/4",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "A few small changes are included in [RFC 8740](https://tools.ietf.org/html/rfc8740), which could be integrated easily.",
+      "createdAt": "2020-09-08T00:19:06Z",
+      "updatedAt": "2020-09-08T00:19:06Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 5,
+      "id": "MDU6SXNzdWU2OTU0NTM2NjI=",
+      "title": "Improve resource exhaustion attack text",
+      "url": "https://github.com/martinthomson/http2v2/issues/5",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "The spec includes language on this, but it turned out that many implementations failed to properly safeguard themselves.  Clearer descriptions of problems based on this experience would be good.",
+      "createdAt": "2020-09-08T00:20:11Z",
+      "updatedAt": "2020-09-08T00:20:11Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 6,
+      "id": "MDU6SXNzdWU2OTU0NTQ0MDU=",
+      "title": "Reserve some codepoints for greasing",
+      "url": "https://github.com/martinthomson/http2v2/issues/6",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "This probably is just frames and settings.  We'll have to make it clear that greased frames in particular aren't necessarily safe to send based on deployment experience.  See also [draft-bishop-httpbis-grease](https://mikebishop.github.io/http-misc-extensions/draft-bishop-httpbis-grease.html).",
+      "createdAt": "2020-09-08T00:22:42Z",
+      "updatedAt": "2020-09-08T00:22:42Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 7,
+      "id": "MDU6SXNzdWU2OTU0NTUwNDY=",
+      "title": "Reference updated core specs",
+      "url": "https://github.com/martinthomson/http2v2/issues/7",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "The table of contents there is currently in flux, but once that resolves we can update references to 723x and cite the latest and greatest.",
+      "createdAt": "2020-09-08T00:24:45Z",
+      "updatedAt": "2020-10-23T00:50:45Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "martinthomson",
+          "authorAssociation": "OWNER",
+          "body": "@reshke suggests we do this real soon now, because it might help highlight issues in the core specs.",
+          "createdAt": "2020-10-22T13:13:04Z",
+          "updatedAt": "2020-10-22T13:13:04Z"
+        },
+        {
+          "author": "reshke",
+          "authorAssociation": "NONE",
+          "body": ":ok: :+1: :cool: :sunglasses: ",
+          "createdAt": "2020-10-22T13:56:53Z",
+          "updatedAt": "2020-10-22T13:56:53Z"
+        },
+        {
+          "author": "reschke",
+          "authorAssociation": "NONE",
+          "body": "Hi, @reshke  :-)",
+          "createdAt": "2020-10-22T15:20:39Z",
+          "updatedAt": "2020-10-22T15:20:39Z"
+        },
+        {
+          "author": "martinthomson",
+          "authorAssociation": "OWNER",
+          "body": "Gah, sorry both.  In my defense, it was 1am and I was trying to pay attention to the call.",
+          "createdAt": "2020-10-23T00:50:44Z",
+          "updatedAt": "2020-10-23T00:50:44Z"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "id": "MDU6SXNzdWU2OTU0NTU2NzM=",
+      "title": "Loosen prohibition on pseudo-fields",
+      "url": "https://github.com/martinthomson/http2v2/issues/8",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "RFC 8441 did a thing with settings that allowed it to violate a MUST-level requirement that prohibited use of pseudo-fields.  This is OK (because extensions were expressly permitted to do that), but some people are uncomfortable with that.",
+      "createdAt": "2020-09-08T00:26:45Z",
+      "updatedAt": "2020-09-08T00:26:45Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 9,
+      "id": "MDU6SXNzdWU2OTU0NTYxMzg=",
+      "title": "Update field terminology",
+      "url": "https://github.com/martinthomson/http2v2/issues/9",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "The update to core specs uses \"fields\" generically.  If we reference that, then it will get really confusing if we keep saying \"HEADERS\" or \"header fields\".  We might even consider changing the name of the frame.",
+      "createdAt": "2020-09-08T00:28:09Z",
+      "updatedAt": "2020-10-22T15:56:05Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "wtarreau",
+          "authorAssociation": "NONE",
+          "body": "It would indeed make sense, especially given how confusing it is to have trailers in a HEADERS frame :-)",
+          "createdAt": "2020-09-08T02:25:33Z",
+          "updatedAt": "2020-09-08T02:25:33Z"
+        },
+        {
+          "author": "afrind",
+          "authorAssociation": "NONE",
+          "body": "We had the option to fix this in H3 before last call and chose to leave it as HEADERS.",
+          "createdAt": "2020-10-22T15:56:05Z",
+          "updatedAt": "2020-10-22T15:56:05Z"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "MDU6SXNzdWU2OTU0NTY1OTY=",
+      "title": "Midders or multiple trailers",
+      "url": "https://github.com/martinthomson/http2v2/issues/10",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "The protocol is very cagey about the semantics of a HEADERS frame if it doesn't include the END_STREAM flag.  Do something about this.",
+      "createdAt": "2020-09-08T00:29:34Z",
+      "updatedAt": "2020-09-08T00:29:34Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 11,
+      "id": "MDU6SXNzdWU2OTU0NTcxNDc=",
+      "title": "Design for 0-RTT",
+      "url": "https://github.com/martinthomson/http2v2/issues/11",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "0-RTT is newer than h2.  As it stands, when 0-RTT is used, the default settings apply because the server doesn't have any chance to send SETTINGS.  That's decidedly suboptimal.",
+      "createdAt": "2020-09-08T00:31:21Z",
+      "updatedAt": "2020-09-14T05:48:07Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "wtarreau",
+          "authorAssociation": "NONE",
+          "body": "Regarding the suboptimal aspect I agree, but how is this any different from the same case where it's sent over a plaintext TCP connection ? I mean, it's the whole server settings mechanism that is suboptimal, but we need something. Default values could possibly be advertised by other means (DNS etc), but similarly we could imagine that clients could cache last seen settings and try to follow them on new connections as long as they don't break the spec. For example learning MAX_CONCURRENT_STREAMS this way can make sense for a client.\r\n",
+          "createdAt": "2020-09-11T08:23:03Z",
+          "updatedAt": "2020-09-11T08:23:03Z"
+        },
+        {
+          "author": "martinthomson",
+          "authorAssociation": "OWNER",
+          "body": "What I'm thinking is that the server could indicate that its setting also apply to 0-RTT.  MAX_CONCURRENT_STREAMS is a bad example here as clients have to plan to exceed this, but I guess that knowing about a very low limit would be helpful.  I'm more thinking about things like the table size, which defaults to a limit that clients could reasonably exceed.  And then there are cases where clients might want to exercise an extension that is signaled using settings.\r\n\r\nThis is new feature work that might be better suited to an extension rather than a revision to the main specification.",
+          "createdAt": "2020-09-14T00:48:54Z",
+          "updatedAt": "2020-09-14T00:48:54Z"
+        },
+        {
+          "author": "wtarreau",
+          "authorAssociation": "NONE",
+          "body": "So in short you would like to be able to signal that the settings are persistent beyond the current connection, that's it ?\n",
+          "createdAt": "2020-09-14T05:28:18Z",
+          "updatedAt": "2020-09-14T05:28:18Z"
+        },
+        {
+          "author": "martinthomson",
+          "authorAssociation": "OWNER",
+          "body": "Yeah, something like that.  We might have to be careful not to persist everything though.  QUIC has a mix of parameters, some that can apply to the next connection and others that apply only to a single connection.  I don't know if h2 will grow that.",
+          "createdAt": "2020-09-14T05:48:07Z",
+          "updatedAt": "2020-09-14T05:48:07Z"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "id": "MDU6SXNzdWU2OTU0OTY0OTE=",
+      "title": "Centralize the definition of frame flags",
+      "url": "https://github.com/martinthomson/http2v2/issues/12",
+      "state": "OPEN",
+      "author": "wtarreau",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The state machine diagram currently mentions EH/ES but each frame has its own definition which happens to always have the same value. Let's instead enumerate known flags with their values at one place, and mention for each frame which ones it supports or are forbidden. This will significantly simplify implementations and will cut the text. It might even lead to generalizing flag processing instead of repeating the text for each frame type.\r\n",
+      "createdAt": "2020-09-08T02:31:43Z",
+      "updatedAt": "2020-09-08T02:31:43Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 13,
+      "id": "MDU6SXNzdWU2OTU1MDAwMzc=",
+      "title": "Try to improve the definition of the closed state",
+      "url": "https://github.com/martinthomson/http2v2/issues/13",
+      "state": "OPEN",
+      "author": "wtarreau",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Rules around the closed state are particularly ambigous, because we lack a \"closing\" or equivalent state and any forced local close by RST_STREAM results in incoming frames violating the rules for what is acceptable in closed state since the other end doesn't know it's closed. It used to be even more problematic with priorities since some dependencies could be completely changed. I had a proposal to improve this using a form of ACK for RST/GOAWAY using PING that would allow one side to know when the other side was notified of these frames, but with priorities gone I don't think that's needed anymore. However we still need to be careful about the MUST NOT wording around whatever involves the closed state.\r\n",
+      "createdAt": "2020-09-08T02:42:18Z",
+      "updatedAt": "2020-09-08T02:42:18Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 14,
+      "id": "MDU6SXNzdWU2OTU1MDc5ODk=",
+      "title": "Speak a bit more about head-of-line blocking",
+      "url": "https://github.com/martinthomson/http2v2/issues/14",
+      "state": "OPEN",
+      "author": "wtarreau",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "H2 strongly suffers from head-of-line blocking when streams do not progress at the same spead, typically when they come from coalesced connections from different clients. Per-stream flow control is generally ineffective against this as practical window sizes matching a BDP often require impractical buffering between the intermediary and the client. As such we should mention in the recommendations that intermediaries that coalesce connections either have very large buffers or try to group streams from a same client connection together on a server connection.",
+      "createdAt": "2020-09-08T03:05:18Z",
+      "updatedAt": "2020-09-08T03:05:18Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 15,
+      "id": "MDU6SXNzdWU3MDA2ODIwNTQ=",
+      "title": "Enabling remote timing attacks",
+      "url": "https://github.com/martinthomson/http2v2/issues/15",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "https://portswigger.net/daily-swig/researchers-exploit-http-2-wpa3-protocols-to-stage-highly-efficient-timeless-timing-attacks describes how HTTP/2 can be used to remove some network-induced jitter from the timing measurements.  If your server has timing side channels, then putting requests that can be compared in the same IP packet ensures that the server receives them at the same time.  This doesn't help if timing differences are masked by server queuing, CDNs or load balancers, or response delivery, but it can help reduce measurement noise.\r\n\r\nConsider documenting this.",
+      "createdAt": "2020-09-14T00:35:54Z",
+      "updatedAt": "2020-09-14T00:35:54Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 16,
+      "id": "MDU6SXNzdWU3MjE4ODM2MjM=",
+      "title": "Cut Server Push",
+      "url": "https://github.com/martinthomson/http2v2/issues/16",
+      "state": "OPEN",
+      "author": "ianswett",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "It's not very widely used and many implementations either don't support it at all or don't support it in a way that improves end-user performance.",
+      "createdAt": "2020-10-15T00:37:06Z",
+      "updatedAt": "2020-10-28T17:32:39Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "afrind",
+          "authorAssociation": "NONE",
+          "body": "HTTP is not just for the web.  There are non-web use cases for push that are performant.  It's optional for both clients and servers to implement so if you don't want to bother with it, you don't have to.",
+          "createdAt": "2020-10-22T13:21:03Z",
+          "updatedAt": "2020-10-22T13:21:03Z"
+        },
+        {
+          "author": "ianswett",
+          "authorAssociation": "NONE",
+          "body": "Question: Are there any use cases for which WebTransport isn't a more appropriate substitute?",
+          "createdAt": "2020-10-22T18:14:27Z",
+          "updatedAt": "2020-10-22T18:14:27Z"
+        },
+        {
+          "author": "dtikhonov",
+          "authorAssociation": "NONE",
+          "body": "We're discussing whether to remove the server push from the spec; you're asking something else.  Alan and a couple of other people at the meeting today pointed out that HTTP/2 is not just for the web.\r\n\r\nThe argument for removing server push sounds like this: \"We at Google cannot figure out how to make server push work well.  This is why we don't want anyone else to be able to use it, either.\"\r\n\r\nFor our part, I know that users of LiteSpeed Web Server [love server push](https://www.google.com/search?q=litespeed+server+push).  Server push _is used_.  Let it stay!",
+          "createdAt": "2020-10-22T19:26:54Z",
+          "updatedAt": "2020-10-22T19:26:54Z"
+        },
+        {
+          "author": "ianswett",
+          "authorAssociation": "NONE",
+          "body": "We actually have found ways to make it work well.  But in those cases, there was an alternative that's much simpler.\r\n\r\nThe argument actually is: \"Server Push is really hard to use well, and most people don't use it at all, and when they do, they fail to use it effectively.\"\r\n\r\nI'm ok with not cutting it if people think it's really useful, but I'm still a bit confused about what these compelling use cases are.",
+          "createdAt": "2020-10-22T19:34:15Z",
+          "updatedAt": "2020-10-22T19:34:15Z"
+        },
+        {
+          "author": "afrind",
+          "authorAssociation": "NONE",
+          "body": "I think WebTransport would need to be further along, both in specification and implementation/deployment before we could consider removing push from the HTTP spec -- not to mention we just minted H3 that has push.\r\n\r\nPush has a particular semantic with respect to HTTP because of the promise -- eg: this URL identifies this object.  Also, push can leverage HTTP structured metadata, but it's not clear if WebTransport will allow that...",
+          "createdAt": "2020-10-22T19:39:44Z",
+          "updatedAt": "2020-10-22T19:39:44Z"
+        },
+        {
+          "author": "ianswett",
+          "authorAssociation": "NONE",
+          "body": "Thanks for explaining Alan.\r\n\r\nI'm receptive to the idea that the two replacements for push are early hints and WebTransport, and both are not quite ready yet.",
+          "createdAt": "2020-10-22T20:16:16Z",
+          "updatedAt": "2020-10-22T20:16:16Z"
+        },
+        {
+          "author": "MikeBishop",
+          "authorAssociation": "NONE",
+          "body": "First, push does provide benefits, it's just complex.  I'm totally open to the idea that most people get it wrong; I'm skeptical of the idea that no one can get it right.\r\n\r\nSecond, a huge +1 to the concept of non-browser use.  As an example of that, RFC 8030 (WebPush) is a standards-track RFC with a hard dependency on Server Push.  I suspect it would be difficult, from a process standpoint, to update RFC 7540 to remove Server Push without first deprecating RFC 8030.",
+          "createdAt": "2020-10-27T19:57:02Z",
+          "updatedAt": "2020-10-27T19:57:02Z"
+        },
+        {
+          "author": "grmocg",
+          "authorAssociation": "NONE",
+          "body": "Looks like Alan and Mike got there before I did.",
+          "createdAt": "2020-10-28T17:32:39Z",
+          "updatedAt": "2020-10-28T17:32:39Z"
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "id": "MDU6SXNzdWU3MjE5MDQ5MTM=",
+      "title": "Update alpn",
+      "url": "https://github.com/martinthomson/http2v2/issues/17",
+      "state": "OPEN",
+      "author": "ianswett",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "A substantial number of deployed clients and servers do not support the extensibility of SETTINGs or frames in HTTP/2.  It may be preferable to mint a new alpn for HTTP2v2 rather than trying to exclude all these peers based on user-agent or other fingerprinting.\r\n\r\nFor existing implementations, this has relatively low cost and greatly reduces deployment risk.  At some point, they can drop support for the old h2 alpn and let clients fall back to HTTP 1.1, just like many did when SPDY support was removed.",
+      "createdAt": "2020-10-15T01:42:25Z",
+      "updatedAt": "2020-10-28T17:37:13Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "martinthomson",
+          "authorAssociation": "OWNER",
+          "body": "Ian clarified this point verbally: the inability of some implementations to tolerate extensions, in settings or frames, is a real impediment to the deployment of extensions.  A clean break might be a way to indicate that an implementation is able to handle extensions.",
+          "createdAt": "2020-10-22T13:20:01Z",
+          "updatedAt": "2020-10-22T13:20:01Z"
+        },
+        {
+          "author": "fiestajetsam",
+          "authorAssociation": "NONE",
+          "body": "If we do move foward with a new ALPN, considerations should be made regarding either superceding h2c in conjunction or deprecating it. I am unsure what is most appropriate but suspect the former may be the end result.",
+          "createdAt": "2020-10-22T13:28:00Z",
+          "updatedAt": "2020-10-22T13:28:00Z"
+        },
+        {
+          "author": "martinthomson",
+          "authorAssociation": "OWNER",
+          "body": "See also #6.",
+          "createdAt": "2020-10-22T13:31:30Z",
+          "updatedAt": "2020-10-22T13:31:30Z"
+        },
+        {
+          "author": "grmocg",
+          "authorAssociation": "NONE",
+          "body": "Likely not a surprise, but I'd strongly support this-- the reason to have these is to be able to rev stuff.",
+          "createdAt": "2020-10-28T17:37:13Z",
+          "updatedAt": "2020-10-28T17:37:13Z"
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "id": "MDU6SXNzdWU3MjczODI1Mzg=",
+      "title": "Update the HPACK static table?",
+      "url": "https://github.com/martinthomson/http2v2/issues/19",
+      "state": "OPEN",
+      "author": "LPardue",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The HPACK static table is a bit old. For QPACK we did some analysis and came up with a \"new\" table, which is probably quite old now itself.\r\n\r\nBecause the tables are different, they probably consume code size in implementations that provide H2 and H3 (unless people are being clever). Alignment of the tables might reduce overhead.\r\n\r\nI'm not going to push hard for doing this work. But it is worth asking the question now and answering it,",
+      "createdAt": "2020-10-22T13:19:05Z",
+      "updatedAt": "2020-10-22T15:49:48Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "afrind",
+          "authorAssociation": "NONE",
+          "body": "Mike raised in the virtual interim that this would be a wire-breaking change, so may be out of scope.  Making it consistent with H3 would be sort of nice, but I'm not sure it would practically reduce overhead in the short term, because stacks would need to keep the old one around for compatibility.\r\n\r\nIf an implementation supports the dynamic table, I don't see much compression benefit, though we could simulate it of course.",
+          "createdAt": "2020-10-22T15:49:48Z",
+          "updatedAt": "2020-10-22T15:49:48Z"
+        }
+      ]
+    }
+  ],
+  "pulls": [
+    {
+      "number": 18,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTA1NjU4ODQ2",
+      "title": "Extensions defining pseudo-header fields",
+      "url": "https://github.com/martinthomson/http2v2/pull/18",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes #8.",
+      "createdAt": "2020-10-19T04:01:12Z",
+      "updatedAt": "2020-10-19T04:01:12Z",
+      "baseRepository": "martinthomson/http2v2",
+      "baseRefName": "main",
+      "baseRefOid": "54ec544962b49e96d76b44d3f3d4f89a19c0d089",
+      "headRepository": "martinthomson/http2v2",
+      "headRefName": "extension-pseudo-field",
+      "headRefOid": "187e694ec9f0f4bc0c1c7bfc3ef6767ee61783e8",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
