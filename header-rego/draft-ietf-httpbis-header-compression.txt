@@ -5,8 +5,8 @@
 HTTPbis                                                          R. Peon
 Internet-Draft                                               Google, Inc
 Intended status: Standards Track                              H. Ruellan
-Expires: 5 December 2021                                       Canon CRF
-                                                             3 June 2021
+Expires: 8 January 2022                                        Canon CRF
+                                                             7 July 2021
 
 
                   HPACK: Header Compression for HTTP/2
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 December 2021.
+   This Internet-Draft will expire on 8 January 2022.
 
 Copyright Notice
 
@@ -1084,7 +1084,7 @@ Table of Contents
    [SPDY]     Belshe, M. and R. Peon, "SPDY Protocol", Work in Progress,
               Internet-Draft, draft-mbelshe-httpbis-spdy-00, February
               2012, <https://datatracker.ietf.org/doc/html/draft-
-              mbelshe-httpbis-spdy-00.txt>.
+              mbelshe-httpbis-spdy-00>.
 
    [TLS12]    Dierks, T. and E. Rescorla, "The Transport Layer Security
               (TLS) Protocol Version 1.2", RFC 5246, August 2008,

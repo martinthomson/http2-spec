@@ -6,7 +6,7 @@ HTTPbis                                                  M. Thomson, Ed.
 Internet-Draft                                                   Mozilla
 Obsoletes: 7540, 8740 (if approved)                     C. Benfield, Ed.
 Intended status: Standards Track                              Apple Inc.
-Expires: 25 November 2021                                    24 May 2021
+Expires: 8 January 2022                                      7 July 2021
 
 
              Hypertext Transfer Protocol Version 2 (HTTP/2)
@@ -27,11 +27,11 @@ Abstract
 
 Discussion Venues
 
+   This note is to be removed before publishing as an RFC.
+
    Discussion of this document takes place on the HTTPBIS Working Group
    mailing list (ietf-http-wg@w3.org), which is archived at
    https://lists.w3.org/Archives/Public/ietf-http-wg/.
-
-   This note is to be removed before publishing as an RFC.
 
    Source for this draft and an issue tracker can be found at
    https://github.com/httpwg/http2-spec.
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 November 2021.
+   This Internet-Draft will expire on 8 January 2022.
 
 Copyright Notice
 
@@ -89,6 +89,7 @@ Table of Contents
      5.2.  Flow Control
        5.2.1.  Flow-Control Principles
        5.2.2.  Appropriate Use of Flow Control
+       5.2.3.  Flow Control Performance
      5.3.  Prioritization
        5.3.1.  Background of Priority in HTTP/2
        5.3.2.  Priority Signaling in this Document
@@ -143,6 +144,7 @@ Table of Contents
      10.6.  Use of Compression
      10.7.  Use of Padding
      10.8.  Privacy Considerations
+     10.9.  Remote Timing Attacks
    11. IANA Considerations
      11.1.  Registration of HTTP/2 Identification Strings
      11.2.  Frame Type Registry
@@ -793,46 +795,46 @@ Table of Contents
 
    closed:  The "closed" state is the terminal state.
 
+      An stream enters the "closed" state after an endpoint both sends
+      and receives a frame with an END_STREAM flag set.  A stream also
+      enters the "closed" state after an endpoint either sends or
+      receives a RST_STREAM frame.
+
       An endpoint MUST NOT send frames other than PRIORITY on a closed
-      stream.  An endpoint that receives any frame other than PRIORITY
-      after receiving a RST_STREAM MUST treat that as a stream error
-      (Section 5.4.2) of type STREAM_CLOSED.  Similarly, an endpoint
-      that receives any frames after receiving a frame with the
-      END_STREAM flag set MUST treat that as a connection error
-      (Section 5.4.1) of type STREAM_CLOSED, unless the frame is
-      permitted as described below.
+      stream.  An endpoint MAY treat receipt of any other type of frame
+      on a "closed" stream as a connection error (Section 5.4.1) of type
+      STREAM_CLOSED, except as noted below.
 
-      WINDOW_UPDATE or RST_STREAM frames can be received in this state
-      for a short period after a DATA or HEADERS frame containing an
-      END_STREAM flag is sent.  Until the remote peer receives and
-      processes RST_STREAM or the frame bearing the END_STREAM flag, it
-      might send frames of these types.  Endpoints MUST ignore
-      WINDOW_UPDATE or RST_STREAM frames received in this state, though
-      endpoints MAY choose to treat frames that arrive a significant
-      time after sending END_STREAM as a connection error
-      (Section 5.4.1) of type PROTOCOL_ERROR.
+      An endpoint that sends a frame with the END_STREAM flag set or a
+      RST_STREAM frame might receive a WINDOW_UPDATE or RST_STREAM frame
+      from its peer in the time before the peer receives and processes
+      the frame that closes the stream.
 
-      PRIORITY frames can be sent on closed streams.
+      An endpoint that sends a RST_STREAM frame on a stream that is in
+      the "open" state could receive any type of frame.  The peer might
+      have sent or enqueued for sending these frames before processing
+      the RST_STREAM frame.  An endpoint MUST minimally process and then
+      discard any frames it receives in this state.  This means updating
+      header compression state for HEADERS and PUSH_PROMISE frames;
+      PUSH_PROMISE frames also cause the promised stream to become
+      "reserved", even when the PUSH_PROMISE frame is received on a
+      closed stream; and, the content of DATA frames counts toward the
+      connection flow-control window.
 
-      If this state is reached as a result of sending a RST_STREAM
-      frame, the peer that receives the RST_STREAM might have already
-      sent -- or enqueued for sending -- frames on the stream that
-      cannot be withdrawn.  An endpoint MUST ignore frames that it
-      receives on closed streams after it has sent a RST_STREAM frame.
-      An endpoint MAY choose to limit the period over which it ignores
-      frames and treat frames that arrive after this time as being in
-      error.
-
-      Flow-controlled frames (i.e., DATA) received after sending
-      RST_STREAM are counted toward the connection flow-control window.
-      Even though these frames might be ignored, because they are sent
-      before the sender receives the RST_STREAM, the sender will
-      consider the frames to count against the flow-control window.
-
-      An endpoint might receive a PUSH_PROMISE frame after it sends
-      RST_STREAM.  PUSH_PROMISE causes a stream to become "reserved"
-      even if the associated stream has been reset.  Therefore, a
-      RST_STREAM is needed to close an unwanted promised stream.
+      An endpoint can perform this minimal processing for all streams
+      that are in the "closed" state.  Endpoints MAY use other signals
+      to detect that a peer has received the frames that caused stream
+      to become "closed" and treat receipt of any frame other than
+      PRIORITY as a connection error (Section 5.4.1) of type
+      PROTOCOL_ERROR.  Endpoints can use frames that indicate that the
+      peer has received the closing signal to drive this.  Endpoints
+      SHOULD NOT use timers for this purpose.  For example, an endpoint
+      that sends a SETTINGS frame after closing a stream can safely
+      treat receipt of a DATA frame on that stream as an error after
+      receiving an acknowledgement of the settings.  Other things that
+      might be used are PING frames, receiving data on streams that were
+      created after closing the stream, or responses to requests created
+      after closing the stream.
 
    In the absence of more specific guidance elsewhere in this document,
    implementations SHOULD treat the receipt of a frame that is not
@@ -995,6 +997,19 @@ Table of Contents
    timely fashion.  Failure to do so could lead to a deadlock when
    critical frames, such as WINDOW_UPDATE, are not read and acted upon.
 
+5.2.3.  Flow Control Performance
+
+   If an endpoint cannot ensure that its peer always has available flow
+   control window space that is greater than the peer's bandwidth-delay
+   product on this connection, its receive throughput will be limited by
+   HTTP/2 flow control.  This will result in degraded performance.
+
+   Sending timely WINDOW_UPDATE frames can improve performance.
+   Endpoints will want to balance the need to improve receive throughput
+   with the need to manage resource exhaustion risks, and should take
+   careful note of Section 10.5 in defining their strategy to manage
+   window sizes.
+
 5.3.  Prioritization
 
    In a multiplexed protocol like HTTP/2, prioritizing allocation of
@@ -1085,7 +1100,10 @@ Table of Contents
 
    If an endpoint detects multiple different errors, it MAY choose to
    report any one of those errors.  If a frame causes a connection
-   error, that error MUST be reported.
+   error, that error MUST be reported.  Additionally, an endpoint MAY
+   use any applicable error code when it detects an error condition; a
+   generic error code (such as PROTOCOL_ERROR or INTERNAL_ERROR) can
+   always be used in place of more specific error codes.
 
 5.4.1.  Connection Error Handling
 
@@ -2231,11 +2249,39 @@ Table of Contents
    "Hypertext Transfer Protocol (HTTP) Field Name Registry" registry
    maintained at https://www.iana.org/assignments/http-fields/.
 
-   Just as in HTTP/1.x, field names are strings of ASCII characters that
-   are compared in a case-insensitive fashion.  Field names MUST be
-   converted to lowercase prior to their encoding in HTTP/2.  A request
-   or response containing uppercase header field names MUST be treated
-   as malformed (Section 8.1.2.6).
+   Field names are strings of ASCII characters that are compared in a
+   case-insensitive fashion.  Field names MUST be converted to lowercase
+   when constructing a HTTP/2 message.
+
+   HPACK is capable of carrying field names or values that are not valid
+   in HTTP.  Though HPACK can carry any octet, fields are not valid in
+   the following cases:
+
+   *  A field name MUST NOT contain characters in the ranges 0x00-0x20,
+      0x41-0x5A, or 0x7F-0xFF (all ranges inclusive).  This limits field
+      names to visible ASCII characters, other than ASCII SP (0x20) and
+      uppercase characters ('A' to 'Z', ASCII 0x41 to 0x5a).
+
+   *  With the exception of pseudo-header fields (Section 8.1.2.1),
+      which have a name that starts with a single colon, field names
+      MUST NOT include a colon (ASCII COLON, 0x3a).
+
+   *  A field value MUST NOT contain the zero value (ASCII NUL, 0x0),
+      line feed (ASCII LF, 0xa), or carriage return (ASCII CR, 0xd) at
+      any position.
+
+   *  A field value MUST NOT start or end with an ASCII whitespace
+      character (ASCII SP or HTAB, 0x20 or 0x9).
+
+   A request or response that contains a field that violates any of
+   these conditions MUST be treated as malformed (Section 8.1.2.6).  In
+   particular, an intermediary that does not process fields when
+   forwarding messages MUST NOT forward fields that contain any of the
+   values that are listed as prohibited above.
+
+   Field values that are not valid according to the definition of the
+   corresponding field do not cause a request to be malformed except as
+   defined by the processing rules for the field.
 
 8.1.2.1.  Pseudo-Header Fields
 
@@ -3036,20 +3082,28 @@ Table of Contents
 
 10.3.  Intermediary Encapsulation Attacks
 
-   The HTTP/2 field block encoding allows the expression of names that
-   are not valid field names in HTTP.  Requests or responses containing
-   invalid field names MUST be treated as malformed (Section 8.1.2.6).
-   An intermediary therefore cannot translate an HTTP/2 request or
-   response containing an invalid field name into an HTTP/1.1 message.
+   HPACK permits encoding of field names and values that might be
+   treated as delimiters in other HTTP versions.  An intermediary that
+   translates an HTTP/2 request or response MUST validate fields
+   according to the rules in Section 8.1.2 roles before translating a
+   message to another HTTP version.  Translating a field that includes
+   invalid delimiters could be used to cause recipients to incorrectly
+   interpret a message, which could be exploited by an attacker.
 
-   Similarly, HTTP/2 allows field values that are not valid.  While most
-   of the values that can be encoded will not alter header field
-   parsing, carriage return (CR, ASCII 0xd), line feed (LF, ASCII 0xa),
-   and the zero character (NUL, ASCII 0x0) might be exploited by an
-   attacker if they are translated verbatim.  Any request or response
-   that contains a character not permitted in a field value MUST be
-   treated as malformed (Section 8.1.2.6).  Valid characters are defined
-   by the "field-content" ABNF rule in Section 5.5 of [HTTP].
+   An intermediary can reject fields that contain invalid field names or
+   values for other reasons, in particular those that do not conform to
+   the HTTP ABNF grammar from Section 5 of [HTTP].  Intermediaries that
+   do not perform any validation of fields other than the minimum
+   required by Section 8.1.2 could forward messages that contain invalid
+   field names or values.
+
+   An intermediary that receives any field that requires removal before
+   forwarding (see Section 7.6.1 of [HTTP]) MUST remove or replace those
+   header fields when forwarding messages.  Additionally, intermediaries
+   should take care when forwarding messages containing Content-Length
+   fields to ensure that the message is well-formed (Section 8.1.2.6).
+   This ensures that if the message is translated into HTTP/1.1 at any
+   point the framing will be correct.
 
 10.4.  Cacheability of Pushed Responses
 
@@ -3262,6 +3316,21 @@ Table of Contents
    they can be used by an endpoint to measure latency to their peer.
    This might have privacy implications in certain scenarios.
 
+10.9.  Remote Timing Attacks
+
+   Remote timing attacks extract secrets from servers by observing
+   variations in the time that servers take when processing requests
+   that use secrets.  HTTP/2 enables concurrent request creation and
+   processing, which can give attackers better control over when request
+   processing commences.  Multiple HTTP/2 requests can be included in
+   the same IP packet or TLS record.  HTTP/2 can therefore make remote
+   timing attacks more efficient by eliminating variability in request
+   delivery, leaving only request order and the delivery of responses as
+   sources of timing variability.
+
+   Ensuring that processing time is not dependent on the value of
+   secrets is the best defense against any form of timing attack.
+
 11.  IANA Considerations
 
    A string for identifying HTTP/2 is entered into the "Application-
@@ -3272,8 +3341,8 @@ Table of Contents
    error codes.  These new registries appear in the new "Hypertext
    Transfer Protocol version 2 (HTTP/2)" section.
 
-   This document registers the "HTTP2-Settings" header field for use in
-   HTTP.
+   This revision of the document marks the "HTTP2-Settings" header field
+   registered in [RFC7540] obsolete.
 
    This document registers the "PRI" method for use in HTTP to avoid
    collisions with the connection preface (Section 3.4).
@@ -3304,10 +3373,9 @@ Table of Contents
 
    This document establishes a registry for HTTP/2 frame type codes.
    The "HTTP/2 Frame Type" registry manages an 8-bit space.  The "HTTP/2
-   Frame Type" registry operates under either of the "IETF Review" or
-   "IESG Approval" policies [RFC5226] for values between 0x00 and 0xef,
-   with values between 0xf0 and 0xff being reserved for Experimental
-   Use.
+   Frame Type" registry operates under either of the Section 4.8 of
+   "IETF Review" [RFC8126] or Section 4.10 of "IESG Approval" [RFC8126]
+   policies.
 
    New entries in this registry require the following information:
 
@@ -3352,9 +3420,8 @@ Table of Contents
 
    This document establishes a registry for HTTP/2 settings.  The
    "HTTP/2 Settings" registry manages a 16-bit space.  The "HTTP/2
-   Settings" registry operates under the "Expert Review" policy
-   [RFC5226] for values in the range from 0x0000 to 0xefff, with values
-   between and 0xf000 and 0xffff being reserved for Experimental Use.
+   Settings" registry operates under the Section 4.5 of "Expert Review"
+   policy [RFC8126].
 
    New registrations are advised to provide the following information:
 
@@ -3392,8 +3459,8 @@ Table of Contents
 
    This document establishes a registry for HTTP/2 error codes.  The
    "HTTP/2 Error Code" registry manages a 32-bit space.  The "HTTP/2
-   Error Code" registry operates under the "Expert Review" policy
-   [RFC5226].
+   Error Code" registry operates under the Section 4.5 of "Expert
+   Review" policy [RFC8126].
 
    Registrations for error codes are required to include a description
    of the error code.  An expert reviewer is advised to examine new
@@ -3466,7 +3533,16 @@ Table of Contents
 11.5.  HTTP2-Settings Header Field Registration
 
    This section marks the "HTTP2-Settings" header field registered in
-   Section 11.5 of [RFC7540] as obsoleted.
+   Section 11.5 of [RFC7540] as obsoleted.  The registration is updated
+   to include the details as required by Section 18.4 of [HTTP]:
+
+   Field Name:  HTTP2-Settings
+
+   Status:  Standard
+
+   Ref.:  Section 3.2.1 of [RFC7540]
+
+   Comments:  Obsolete; see Section 11.5
 
 11.6.  PRI Method Registration
 
@@ -3499,7 +3575,7 @@ Table of Contents
               Ed., "HTTP Caching", Work in Progress, Internet-Draft,
               draft-ietf-httpbis-cache-15, 30 March 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              cache-15.txt>.
+              cache-15>.
 
    [COMPRESSION]
               Peon, R. and H. Ruellan, "HPACK: Header Compression for
@@ -3517,7 +3593,7 @@ Table of Contents
               Ed., "HTTP Semantics", Work in Progress, Internet-Draft,
               draft-ietf-httpbis-semantics-15, 30 March 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              semantics-15.txt>.
+              semantics-15>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997,
@@ -3528,17 +3604,10 @@ Table of Contents
               RFC 3986, January 2005,
               <https://datatracker.ietf.org/doc/html/rfc3986>.
 
-   [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
-              Encodings", RFC 4648, October 2006,
-              <https://datatracker.ietf.org/doc/html/rfc4648>.
-
-   [RFC5226]  Narten, T. and H. Alvestrand, "Guidelines for Writing an
-              IANA Considerations Section in RFCs", BCP 26, RFC 5226,
-              May 2008, <https://datatracker.ietf.org/doc/html/rfc5226>.
-
-   [RFC5234]  Crocker, D., Ed. and P. Overell, "Augmented BNF for Syntax
-              Specifications: ABNF", STD 68, RFC 5234, January 2008,
-              <https://datatracker.ietf.org/doc/html/rfc5234>.
+   [RFC8126]  Cotton, M., Leiba, B., and R. Narten, "Guidelines for
+              Writing an IANA Considerations Section in RFCs", BCP 26,
+              RFC 8126, DOI 10.17487/RFC8126, June 2017,
+              <https://datatracker.ietf.org/doc/html/rfc8126>.
 
    [RFC8470]  Thomson, M., Nottingham, M., and W. Tarreau, "Using Early
               Data in HTTP", RFC 8470, DOI 10.17487/RFC8470, September
@@ -3577,11 +3646,6 @@ Table of Contents
               Alternative Services", RFC 7838, April 2016,
               <https://datatracker.ietf.org/doc/html/rfc7838>.
 
-   [BCP90]    Klyne, G., Nottingham, M., and J. Mogul, "Registration
-              Procedures for Message Header Fields", BCP 90, RFC 3864,
-              September 2004,
-              <https://datatracker.ietf.org/doc/html/rfc3864>.
-
    [BREACH]   Gluck, Y., Harris, N., and A. Prado, "BREACH: Reviving the
               CRIME Attack", 12 July 2013,
               <http://breachattack.com/resources/
@@ -3597,14 +3661,14 @@ Table of Contents
               Ed., "HTTP/1.1", Work in Progress, Internet-Draft, draft-
               ietf-httpbis-messaging-15, 30 March 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              messaging-15.txt>.
+              messaging-15>.
 
    [I-D.ietf-httpbis-priority]
               Oku, K. and L. Pardue, "Extensible Prioritization Scheme
               for HTTP", Work in Progress, Internet-Draft, draft-ietf-
               httpbis-priority-03, 11 January 2021,
               <https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-
-              priority-03.txt>.
+              priority-03>.
 
    [NFLX-2019-002]
               Netflix, "HTTP/2 Denial of Service Advisory", 13 August
@@ -3965,6 +4029,9 @@ Appendix B.  Changes from RFC 7540
    *  The HTTP/1.1 Upgrade mechanism is no longer specified in this
       document.  It was never widely deployed, with plaintext HTTP/2
       users choosing to use the prior-knowledge implementation instead.
+
+   *  The ranges of codepoints for settings and frame types that were
+      reserved for "Experimental Use" are now available for general use.
 
 Contributors
 

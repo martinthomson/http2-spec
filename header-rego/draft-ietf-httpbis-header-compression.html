@@ -14,31 +14,194 @@
                 HTTP/2.
        
     " name="description">
-<meta content="xml2rfc 3.7.0" name="generator">
+<meta content="xml2rfc 3.9.1" name="generator">
 <meta content="HTTP" name="keyword">
 <meta content="Header" name="keyword">
 <meta content="draft-ietf-httpbis-header-compression-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.7.0
-    Python 3.8.10
+  xml2rfc 3.9.1
+    Python 3.9.5
     appdirs 1.4.4
-    ConfigArgParse 1.2.3
-    google-i18n-address 2.4.0
+    ConfigArgParse 1.3
+    google-i18n-address 2.5.0
     html5lib 1.1
     intervaltree 3.1.0
-    Jinja2 2.11.2
+    Jinja2 2.11.3
     kitchen 1.2.6
     lxml 4.6.3
     pycountry 20.7.3
-    pyflakes 2.2.0
+    pyflakes 2.3.0
     PyYAML 5.4.1
     requests 2.25.1
-    setuptools 51.3.3
+    setuptools 52.0.0
     six 1.15.0
 -->
 <link href="draft-ietf-httpbis-header-compression.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
-<style type="text/css">@import url('https://martinthomson.github.io/i-d-template/fonts.css');
+<style type="text/css">@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-cyrillic.woff2') format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Lora Bold'), local('Lora-Bold'), url('https://martinthomson.github.io/rfc-css/fonts/lora-bold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-vietnamese.woff2') format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Cabin Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Oxygen Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 html {
   --background-color: #fff;
@@ -849,11 +1012,11 @@ address div.right {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">HPACK</td>
-<td class="right">May 2021</td>
+<td class="right">July 2021</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Peon &amp; Ruellan</td>
-<td class="center">Expires 25 November 2021</td>
+<td class="center">Expires 8 January 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -866,12 +1029,12 @@ address div.right {
 <dd class="internet-draft">draft-ietf-httpbis-header-compression-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-05-24" class="published">24 May 2021</time>
+<time datetime="2021-07-07" class="published">7 July 2021</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2021-11-25">25 November 2021</time></dd>
+<dd class="expires"><time datetime="2022-01-08">8 January 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -923,7 +1086,7 @@ address div.right {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 25 November 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 8 January 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -951,255 +1114,255 @@ address div.right {
         <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
 <a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
         </h2>
-<nav class="toc"><ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.1">
+<nav class="toc"><ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.1.2.1">
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.1.2.1">
                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-overview" class="xref">Overview</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.1.2.2">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.1.2.2">
                 <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="xref">1.2</a>.  <a href="#name-conventions" class="xref">Conventions</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.1.2.3">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.1.2.3">
                 <p id="section-toc.1-1.1.2.3.1" class="keepWithNext"><a href="#section-1.3" class="xref">1.3</a>.  <a href="#name-terminology" class="xref">Terminology</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.2">
+          <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.2">
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="xref">2</a>.  <a href="#name-compression-process-overvie" class="xref">Compression Process Overview</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.2.2.1">
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.2.2.1">
                 <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-header-list-ordering" class="xref">Header List Ordering</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.2.2.2">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.2.2.2">
                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="xref">2.2</a>.  <a href="#name-encoding-and-decoding-conte" class="xref">Encoding and Decoding Contexts</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.2.2.3">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.2.2.3">
                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-indexing-tables" class="xref">Indexing Tables</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.2.2.3.2.1">
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.2.2.3.2.1">
                     <p id="section-toc.1-1.2.2.3.2.1.1"><a href="#section-2.3.1" class="xref">2.3.1</a>.  <a href="#name-static-table" class="xref">Static Table</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.2.2.3.2.2">
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.2.2.3.2.2">
                     <p id="section-toc.1-1.2.2.3.2.2.1"><a href="#section-2.3.2" class="xref">2.3.2</a>.  <a href="#name-dynamic-table" class="xref">Dynamic Table</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.2.2.3.2.3">
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.2.2.3.2.3">
                     <p id="section-toc.1-1.2.2.3.2.3.1"><a href="#section-2.3.3" class="xref">2.3.3</a>.  <a href="#name-index-address-space" class="xref">Index Address Space</a></p>
 </li>
                 </ul>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.2.2.4">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.2.2.4">
                 <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="xref">2.4</a>.  <a href="#name-header-field-representation" class="xref">Header Field Representation</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.3">
+          <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-header-block-decoding" class="xref">Header Block Decoding</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.3.2.1">
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.3.2.1">
                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-header-block-processing" class="xref">Header Block Processing</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.3.2.2">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.3.2.2">
                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-header-field-representation-" class="xref">Header Field Representation Processing</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.4">
+          <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-dynamic-table-management" class="xref">Dynamic Table Management</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.4.2.1">
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.4.2.1">
                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-calculating-table-size" class="xref">Calculating Table Size</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.4.2.2">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.4.2.2">
                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-maximum-table-size" class="xref">Maximum Table Size</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.4.2.3">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.4.2.3">
                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-entry-eviction-when-dynamic" class="xref">Entry Eviction When Dynamic Table Size Changes</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.4.2.4">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.4.2.4">
                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-entry-eviction-when-adding-" class="xref">Entry Eviction When Adding New Entries</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.5">
+          <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-primitive-type-representati" class="xref">Primitive Type Representations</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.5.2.1">
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.5.2.1">
                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-integer-representation" class="xref">Integer Representation</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.5.2.2">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.5.2.2">
                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-string-literal-representati" class="xref">String Literal Representation</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.6">
+          <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.6">
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-binary-format" class="xref">Binary Format</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.6.2.1">
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.6.2.1">
                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-indexed-header-field-repres" class="xref">Indexed Header Field Representation</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.6.2.2">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.6.2.2">
                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-literal-header-field-repres" class="xref">Literal Header Field Representation</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.6.2.2.2.1">
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.6.2.2.2.1">
                     <p id="section-toc.1-1.6.2.2.2.1.1"><a href="#section-6.2.1" class="xref">6.2.1</a>.  <a href="#name-literal-header-field-with-i" class="xref">Literal Header Field with Incremental Indexing</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.6.2.2.2.2">
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.6.2.2.2.2">
                     <p id="section-toc.1-1.6.2.2.2.2.1"><a href="#section-6.2.2" class="xref">6.2.2</a>.  <a href="#name-literal-header-field-withou" class="xref">Literal Header Field without Indexing</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.6.2.2.2.3">
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.6.2.2.2.3">
                     <p id="section-toc.1-1.6.2.2.2.3.1"><a href="#section-6.2.3" class="xref">6.2.3</a>.  <a href="#name-literal-header-field-never-" class="xref">Literal Header Field Never Indexed</a></p>
 </li>
                 </ul>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.6.2.3">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.6.2.3">
                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="xref">6.3</a>.  <a href="#name-dynamic-table-size-update" class="xref">Dynamic Table Size Update</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.7">
+          <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.7">
             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.7.2.1">
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.7.2.1">
                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="xref">7.1</a>.  <a href="#name-probing-dynamic-table-state" class="xref">Probing Dynamic Table State</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.7.2.1.2.1">
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.7.2.1.2.1">
                     <p id="section-toc.1-1.7.2.1.2.1.1"><a href="#section-7.1.1" class="xref">7.1.1</a>.  <a href="#name-applicability-to-hpack-and-" class="xref">Applicability to HPACK and HTTP</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.7.2.1.2.2">
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.7.2.1.2.2">
                     <p id="section-toc.1-1.7.2.1.2.2.1"><a href="#section-7.1.2" class="xref">7.1.2</a>.  <a href="#name-mitigation" class="xref">Mitigation</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.7.2.1.2.3">
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.7.2.1.2.3">
                     <p id="section-toc.1-1.7.2.1.2.3.1"><a href="#section-7.1.3" class="xref">7.1.3</a>.  <a href="#name-never-indexed-literals" class="xref">Never-Indexed Literals</a></p>
 </li>
                 </ul>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.7.2.2">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.7.2.2">
                 <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="xref">7.2</a>.  <a href="#name-static-huffman-encoding" class="xref">Static Huffman Encoding</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.7.2.3">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.7.2.3">
                 <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="xref">7.3</a>.  <a href="#name-memory-consumption" class="xref">Memory Consumption</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.7.2.4">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.7.2.4">
                 <p id="section-toc.1-1.7.2.4.1"><a href="#section-7.4" class="xref">7.4</a>.  <a href="#name-implementation-limits" class="xref">Implementation Limits</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.8">
+          <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.8">
             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-references" class="xref">References</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.8.2.1">
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.8.2.1">
                 <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.8.2.2">
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.8.2.2">
                 <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-static-table-definition" class="xref">Static Table Definition</a></p>
+          <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="xref">Appendix A</a>.  <a href="#name-static-table-definition" class="xref">Static Table Definition</a></p>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#section-appendix.b" class="xref">Appendix B</a>.  <a href="#name-huffman-code" class="xref">Huffman Code</a></p>
+          <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#appendix-B" class="xref">Appendix B</a>.  <a href="#name-huffman-code" class="xref">Huffman Code</a></p>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#section-appendix.c" class="xref">Appendix C</a>.  <a href="#name-examples" class="xref">Examples</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.11.2.1">
-                <p id="section-toc.1-1.11.2.1.1"><a href="#section-c.1" class="xref">C.1</a>.  <a href="#name-integer-representation-exam" class="xref">Integer Representation Examples</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.11.2.1.2.1">
-                    <p id="section-toc.1-1.11.2.1.2.1.1"><a href="#section-c.1.1" class="xref">C.1.1</a>.  <a href="#name-example-1-encoding-10-using" class="xref">Example 1: Encoding 10 Using a 5-Bit Prefix</a></p>
+          <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#appendix-C" class="xref">Appendix C</a>.  <a href="#name-examples" class="xref">Examples</a></p>
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.1">
+                <p id="section-toc.1-1.11.2.1.1"><a href="#appendix-C.1" class="xref">C.1</a>.  <a href="#name-integer-representation-exam" class="xref">Integer Representation Examples</a></p>
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.1.2.1">
+                    <p id="section-toc.1-1.11.2.1.2.1.1"><a href="#appendix-C.1.1" class="xref">C.1.1</a>.  <a href="#name-example-1-encoding-10-using" class="xref">Example 1: Encoding 10 Using a 5-Bit Prefix</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.1.2.2">
-                    <p id="section-toc.1-1.11.2.1.2.2.1"><a href="#section-c.1.2" class="xref">C.1.2</a>.  <a href="#name-example-2-encoding-1337-usi" class="xref">Example 2: Encoding 1337 Using a 5-Bit Prefix</a></p>
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.1.2.2">
+                    <p id="section-toc.1-1.11.2.1.2.2.1"><a href="#appendix-C.1.2" class="xref">C.1.2</a>.  <a href="#name-example-2-encoding-1337-usi" class="xref">Example 2: Encoding 1337 Using a 5-Bit Prefix</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.1.2.3">
-                    <p id="section-toc.1-1.11.2.1.2.3.1"><a href="#section-c.1.3" class="xref">C.1.3</a>.  <a href="#name-example-3-encoding-42-start" class="xref">Example 3: Encoding 42 Starting at an Octet Boundary</a></p>
-</li>
-                </ul>
-</li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.2">
-                <p id="section-toc.1-1.11.2.2.1"><a href="#section-c.2" class="xref">C.2</a>.  <a href="#name-header-field-representation-e" class="xref">Header Field Representation Examples</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.11.2.2.2.1">
-                    <p id="section-toc.1-1.11.2.2.2.1.1"><a href="#section-c.2.1" class="xref">C.2.1</a>.  <a href="#name-literal-header-field-with-ind" class="xref">Literal Header Field with Indexing</a></p>
-</li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.2.2.2">
-                    <p id="section-toc.1-1.11.2.2.2.2.1"><a href="#section-c.2.2" class="xref">C.2.2</a>.  <a href="#name-literal-header-field-without-i" class="xref">Literal Header Field without Indexing</a></p>
-</li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.2.2.3">
-                    <p id="section-toc.1-1.11.2.2.2.3.1"><a href="#section-c.2.3" class="xref">C.2.3</a>.  <a href="#name-literal-header-field-never-ind" class="xref">Literal Header Field Never Indexed</a></p>
-</li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.2.2.4">
-                    <p id="section-toc.1-1.11.2.2.2.4.1"><a href="#section-c.2.4" class="xref">C.2.4</a>.  <a href="#name-indexed-header-field-2" class="xref">Indexed Header Field</a></p>
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.1.2.3">
+                    <p id="section-toc.1-1.11.2.1.2.3.1"><a href="#appendix-C.1.3" class="xref">C.1.3</a>.  <a href="#name-example-3-encoding-42-start" class="xref">Example 3: Encoding 42 Starting at an Octet Boundary</a></p>
 </li>
                 </ul>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.3">
-                <p id="section-toc.1-1.11.2.3.1"><a href="#section-c.3" class="xref">C.3</a>.  <a href="#name-request-examples-without-hu" class="xref">Request Examples without Huffman Coding</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.11.2.3.2.1">
-                    <p id="section-toc.1-1.11.2.3.2.1.1"><a href="#section-c.3.1" class="xref">C.3.1</a>.  <a href="#name-first-request" class="xref">First Request</a></p>
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.2">
+                <p id="section-toc.1-1.11.2.2.1"><a href="#appendix-C.2" class="xref">C.2</a>.  <a href="#name-header-field-representation-e" class="xref">Header Field Representation Examples</a></p>
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.2.2.1">
+                    <p id="section-toc.1-1.11.2.2.2.1.1"><a href="#appendix-C.2.1" class="xref">C.2.1</a>.  <a href="#name-literal-header-field-with-ind" class="xref">Literal Header Field with Indexing</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.3.2.2">
-                    <p id="section-toc.1-1.11.2.3.2.2.1"><a href="#section-c.3.2" class="xref">C.3.2</a>.  <a href="#name-second-request" class="xref">Second Request</a></p>
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.2.2.2">
+                    <p id="section-toc.1-1.11.2.2.2.2.1"><a href="#appendix-C.2.2" class="xref">C.2.2</a>.  <a href="#name-literal-header-field-without-i" class="xref">Literal Header Field without Indexing</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.3.2.3">
-                    <p id="section-toc.1-1.11.2.3.2.3.1"><a href="#section-c.3.3" class="xref">C.3.3</a>.  <a href="#name-third-request" class="xref">Third Request</a></p>
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.2.2.3">
+                    <p id="section-toc.1-1.11.2.2.2.3.1"><a href="#appendix-C.2.3" class="xref">C.2.3</a>.  <a href="#name-literal-header-field-never-ind" class="xref">Literal Header Field Never Indexed</a></p>
 </li>
-                </ul>
-</li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.4">
-                <p id="section-toc.1-1.11.2.4.1"><a href="#section-c.4" class="xref">C.4</a>.  <a href="#name-request-examples-with-huffm" class="xref">Request Examples with Huffman Coding</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.11.2.4.2.1">
-                    <p id="section-toc.1-1.11.2.4.2.1.1"><a href="#section-c.4.1" class="xref">C.4.1</a>.  <a href="#name-first-request-2" class="xref">First Request</a></p>
-</li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.4.2.2">
-                    <p id="section-toc.1-1.11.2.4.2.2.1"><a href="#section-c.4.2" class="xref">C.4.2</a>.  <a href="#name-second-request-2" class="xref">Second Request</a></p>
-</li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.4.2.3">
-                    <p id="section-toc.1-1.11.2.4.2.3.1"><a href="#section-c.4.3" class="xref">C.4.3</a>.  <a href="#name-third-request-2" class="xref">Third Request</a></p>
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.2.2.4">
+                    <p id="section-toc.1-1.11.2.2.2.4.1"><a href="#appendix-C.2.4" class="xref">C.2.4</a>.  <a href="#name-indexed-header-field-2" class="xref">Indexed Header Field</a></p>
 </li>
                 </ul>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.5">
-                <p id="section-toc.1-1.11.2.5.1"><a href="#section-c.5" class="xref">C.5</a>.  <a href="#name-response-examples-without-h" class="xref">Response Examples without Huffman Coding</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.11.2.5.2.1">
-                    <p id="section-toc.1-1.11.2.5.2.1.1"><a href="#section-c.5.1" class="xref">C.5.1</a>.  <a href="#name-first-response" class="xref">First Response</a></p>
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.3">
+                <p id="section-toc.1-1.11.2.3.1"><a href="#appendix-C.3" class="xref">C.3</a>.  <a href="#name-request-examples-without-hu" class="xref">Request Examples without Huffman Coding</a></p>
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.3.2.1">
+                    <p id="section-toc.1-1.11.2.3.2.1.1"><a href="#appendix-C.3.1" class="xref">C.3.1</a>.  <a href="#name-first-request" class="xref">First Request</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.5.2.2">
-                    <p id="section-toc.1-1.11.2.5.2.2.1"><a href="#section-c.5.2" class="xref">C.5.2</a>.  <a href="#name-second-response" class="xref">Second Response</a></p>
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.3.2.2">
+                    <p id="section-toc.1-1.11.2.3.2.2.1"><a href="#appendix-C.3.2" class="xref">C.3.2</a>.  <a href="#name-second-request" class="xref">Second Request</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.5.2.3">
-                    <p id="section-toc.1-1.11.2.5.2.3.1"><a href="#section-c.5.3" class="xref">C.5.3</a>.  <a href="#name-third-response" class="xref">Third Response</a></p>
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.3.2.3">
+                    <p id="section-toc.1-1.11.2.3.2.3.1"><a href="#appendix-C.3.3" class="xref">C.3.3</a>.  <a href="#name-third-request" class="xref">Third Request</a></p>
 </li>
                 </ul>
 </li>
-              <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.6">
-                <p id="section-toc.1-1.11.2.6.1"><a href="#section-c.6" class="xref">C.6</a>.  <a href="#name-response-examples-with-huff" class="xref">Response Examples with Huffman Coding</a></p>
-<ul class="ulEmpty toc compact">
-<li class="ulEmpty toc compact" id="section-toc.1-1.11.2.6.2.1">
-                    <p id="section-toc.1-1.11.2.6.2.1.1"><a href="#section-c.6.1" class="xref">C.6.1</a>.  <a href="#name-first-response-2" class="xref">First Response</a></p>
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.4">
+                <p id="section-toc.1-1.11.2.4.1"><a href="#appendix-C.4" class="xref">C.4</a>.  <a href="#name-request-examples-with-huffm" class="xref">Request Examples with Huffman Coding</a></p>
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.4.2.1">
+                    <p id="section-toc.1-1.11.2.4.2.1.1"><a href="#appendix-C.4.1" class="xref">C.4.1</a>.  <a href="#name-first-request-2" class="xref">First Request</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.6.2.2">
-                    <p id="section-toc.1-1.11.2.6.2.2.1"><a href="#section-c.6.2" class="xref">C.6.2</a>.  <a href="#name-second-response-2" class="xref">Second Response</a></p>
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.4.2.2">
+                    <p id="section-toc.1-1.11.2.4.2.2.1"><a href="#appendix-C.4.2" class="xref">C.4.2</a>.  <a href="#name-second-request-2" class="xref">Second Request</a></p>
 </li>
-                  <li class="ulEmpty toc compact" id="section-toc.1-1.11.2.6.2.3">
-                    <p id="section-toc.1-1.11.2.6.2.3.1"><a href="#section-c.6.3" class="xref">C.6.3</a>.  <a href="#name-third-response-2" class="xref">Third Response</a></p>
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.4.2.3">
+                    <p id="section-toc.1-1.11.2.4.2.3.1"><a href="#appendix-C.4.3" class="xref">C.4.3</a>.  <a href="#name-third-request-2" class="xref">Third Request</a></p>
+</li>
+                </ul>
+</li>
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.5">
+                <p id="section-toc.1-1.11.2.5.1"><a href="#appendix-C.5" class="xref">C.5</a>.  <a href="#name-response-examples-without-h" class="xref">Response Examples without Huffman Coding</a></p>
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.5.2.1">
+                    <p id="section-toc.1-1.11.2.5.2.1.1"><a href="#appendix-C.5.1" class="xref">C.5.1</a>.  <a href="#name-first-response" class="xref">First Response</a></p>
+</li>
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.5.2.2">
+                    <p id="section-toc.1-1.11.2.5.2.2.1"><a href="#appendix-C.5.2" class="xref">C.5.2</a>.  <a href="#name-second-response" class="xref">Second Response</a></p>
+</li>
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.5.2.3">
+                    <p id="section-toc.1-1.11.2.5.2.3.1"><a href="#appendix-C.5.3" class="xref">C.5.3</a>.  <a href="#name-third-response" class="xref">Third Response</a></p>
+</li>
+                </ul>
+</li>
+              <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.6">
+                <p id="section-toc.1-1.11.2.6.1"><a href="#appendix-C.6" class="xref">C.6</a>.  <a href="#name-response-examples-with-huff" class="xref">Response Examples with Huffman Coding</a></p>
+<ul class="ulBare compact toc ulEmpty">
+<li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.6.2.1">
+                    <p id="section-toc.1-1.11.2.6.2.1.1"><a href="#appendix-C.6.1" class="xref">C.6.1</a>.  <a href="#name-first-response-2" class="xref">First Response</a></p>
+</li>
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.6.2.2">
+                    <p id="section-toc.1-1.11.2.6.2.2.1"><a href="#appendix-C.6.2" class="xref">C.6.2</a>.  <a href="#name-second-response-2" class="xref">Second Response</a></p>
+</li>
+                  <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.11.2.6.2.3">
+                    <p id="section-toc.1-1.11.2.6.2.3.1"><a href="#appendix-C.6.3" class="xref">C.6.3</a>.  <a href="#name-third-response-2" class="xref">Third Response</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#section-appendix.d" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a></p>
+          <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.12">
+            <p id="section-toc.1-1.12.1"><a href="#appendix-D" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a></p>
 </li>
-          <li class="ulEmpty toc compact" id="section-toc.1-1.13">
-            <p id="section-toc.1-1.13.1"><a href="#section-appendix.e" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
+          <li class="ulBare compact toc ulEmpty" id="section-toc.1-1.13">
+            <p id="section-toc.1-1.13.1"><a href="#appendix-E" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -2588,7 +2751,7 @@ else
 <dd class="break"></dd>
 <dt id="SPDY">[SPDY]</dt>
         <dd>
-<span class="refAuthor">Belshe, M.</span> and <span class="refAuthor">R. Peon</span>, <span class="refTitle">"SPDY Protocol"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-mbelshe-httpbis-spdy-00</span>, <time datetime="2012-02" class="refDate">February 2012</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-mbelshe-httpbis-spdy-00.txt">https://datatracker.ietf.org/doc/html/draft-mbelshe-httpbis-spdy-00.txt</a>&gt;</span>. </dd>
+<span class="refAuthor">Belshe, M.</span> and <span class="refAuthor">R. Peon</span>, <span class="refTitle">"SPDY Protocol"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-mbelshe-httpbis-spdy-00</span>, <time datetime="2012-02" class="refDate">February 2012</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-mbelshe-httpbis-spdy-00">https://datatracker.ietf.org/doc/html/draft-mbelshe-httpbis-spdy-00</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="TLS12">[TLS12]</dt>
       <dd>
@@ -2598,24 +2761,24 @@ else
 </section>
 </section>
 <div id="static.table.definition">
-<section id="section-appendix.a">
+<section id="appendix-A">
       <h2 id="name-static-table-definition">
-<a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-static-table-definition" class="section-name selfRef">Static Table Definition</a>
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-static-table-definition" class="section-name selfRef">Static Table Definition</a>
       </h2>
-<p id="section-appendix.a-1">
+<p id="appendix-A-1">
                 The static table (see <a href="#static.table" class="xref">Section 2.3.1</a>) consists in
-                a predefined and unchangeable list of header fields.<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
-<p id="section-appendix.a-2">
+                a predefined and unchangeable list of header fields.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">
                 The static table was created from the most frequent header
                 fields used by popular web sites, with the addition of
                 HTTP/2-specific pseudo-header fields (see <span>[<a href="#HTTP2" class="xref">HTTP2</a>]</span>).
                 For header fields with a few frequent
                 values, an entry was added for each of these frequent values.
                 For other header fields, an entry was added with an empty
-                value.<a href="#section-appendix.a-2" class="pilcrow">¶</a></p>
-<p id="section-appendix.a-3">
+                value.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+<p id="appendix-A-3">
                 <a href="#static.table.entries" class="xref">Table 1</a> lists the predefined header fields that
-                make up the static table and gives the index of each entry.<a href="#section-appendix.a-3" class="pilcrow">¶</a></p>
+                make up the static table and gives the index of each entry.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
 <span id="name-static-table-entries"></span><div id="static.table.entries">
 <table class="center" id="table-1">
         <caption>
@@ -2941,55 +3104,55 @@ else
 </section>
 </div>
 <div id="huffman.code">
-<section id="section-appendix.b">
+<section id="appendix-B">
       <h2 id="name-huffman-code">
-<a href="#section-appendix.b" class="section-number selfRef">Appendix B. </a><a href="#name-huffman-code" class="section-name selfRef">Huffman Code</a>
+<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-huffman-code" class="section-name selfRef">Huffman Code</a>
       </h2>
-<p id="section-appendix.b-1">
+<p id="appendix-B-1">
                 The following Huffman code is used when encoding string literals
-                with a Huffman coding (see <a href="#string.literal.representation" class="xref">Section 5.2</a>).<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
-<p id="section-appendix.b-2">
+                with a Huffman coding (see <a href="#string.literal.representation" class="xref">Section 5.2</a>).<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+<p id="appendix-B-2">
                 This Huffman code was generated from statistics obtained on a
                 large sample of HTTP headers. It is a canonical Huffman code
                 (see <span>[<a href="#CANONICAL" class="xref">CANONICAL</a>]</span>) with some tweaking to ensure
-                that no symbol has a unique code length.<a href="#section-appendix.b-2" class="pilcrow">¶</a></p>
-<p id="section-appendix.b-3">
+                that no symbol has a unique code length.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+<p id="appendix-B-3">
                 Each row in the table defines the code used to represent a
-                symbol:<a href="#section-appendix.b-3" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlParallel" id="section-appendix.b-4">
-        <dt id="section-appendix.b-4.1">sym:</dt>
-        <dd style="margin-left: 1.5em" id="section-appendix.b-4.2">
+                symbol:<a href="#appendix-B-3" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="appendix-B-4">
+        <dt id="appendix-B-4.1">sym:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-4.2">
                         The symbol to be represented. It is the decimal value of
                         an octet, possibly prepended with its ASCII
                         representation. A specific symbol, "EOS", is used to
-                        indicate the end of a string literal.<a href="#section-appendix.b-4.2" class="pilcrow">¶</a>
+                        indicate the end of a string literal.<a href="#appendix-B-4.2" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-appendix.b-4.3">code as bits:</dt>
-        <dd style="margin-left: 1.5em" id="section-appendix.b-4.4">
+<dt id="appendix-B-4.3">code as bits:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-4.4">
                         The Huffman code for the symbol represented as a base-2
-                        integer, aligned on the most significant bit (MSB).<a href="#section-appendix.b-4.4" class="pilcrow">¶</a>
+                        integer, aligned on the most significant bit (MSB).<a href="#appendix-B-4.4" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-appendix.b-4.5">code as hex:</dt>
-        <dd style="margin-left: 1.5em" id="section-appendix.b-4.6">
+<dt id="appendix-B-4.5">code as hex:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-4.6">
                         The Huffman code for the symbol, represented as a
                         hexadecimal integer, aligned on the least significant
-                        bit (LSB).<a href="#section-appendix.b-4.6" class="pilcrow">¶</a>
+                        bit (LSB).<a href="#appendix-B-4.6" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-appendix.b-4.7">len:</dt>
-        <dd style="margin-left: 1.5em" id="section-appendix.b-4.8">
-                        The number of bits for the code representing the symbol.<a href="#section-appendix.b-4.8" class="pilcrow">¶</a>
+<dt id="appendix-B-4.7">len:</dt>
+        <dd style="margin-left: 1.5em" id="appendix-B-4.8">
+                        The number of bits for the code representing the symbol.<a href="#appendix-B-4.8" class="pilcrow">¶</a>
 </dd>
       <dd class="break"></dd>
 </dl>
-<p id="section-appendix.b-5">
+<p id="appendix-B-5">
                 As an example, the code for the symbol 47 (corresponding to the
                 ASCII character "/") consists in the 6 bits "0", "1", "1", "0",
                 "0", "0". This corresponds to the value 0x18 (in hexadecimal)
-                encoded in 6 bits.<a href="#section-appendix.b-5" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-inline" id="section-appendix.b-6">
+                encoded in 6 bits.<a href="#appendix-B-5" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-inline" id="appendix-B-6">
 <pre>
                                                      code
                        code as bits                 as hex   len
@@ -3252,104 +3415,104 @@ else
     (254)  |11111111|11111111|11111110|000          7fffff0  [27]
     (255)  |11111111|11111111|11111011|10           3ffffee  [26]
 EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
-</pre><a href="#section-appendix.b-6" class="pilcrow">¶</a>
+</pre><a href="#appendix-B-6" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
 <div id="examples">
-<section id="section-appendix.c">
+<section id="appendix-C">
       <h2 id="name-examples">
-<a href="#section-appendix.c" class="section-number selfRef">Appendix C. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
+<a href="#appendix-C" class="section-number selfRef">Appendix C. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
       </h2>
-<p id="section-appendix.c-1">
+<p id="appendix-C-1">
                 This appendix contains examples covering integer
                 encoding, header field representation, and the encoding of whole
                 lists of header fields for both requests and responses,
-                with and without Huffman coding.<a href="#section-appendix.c-1" class="pilcrow">¶</a></p>
+                with and without Huffman coding.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
 <div id="integer.representation.examples">
-<section id="section-c.1">
-        <h2 id="name-integer-representation-exam">
-<a href="#section-c.1" class="section-number selfRef">C.1. </a><a href="#name-integer-representation-exam" class="section-name selfRef">Integer Representation Examples</a>
-        </h2>
-<p id="section-c.1-1">
+<section id="appendix-C.1">
+        <h3 id="name-integer-representation-exam">
+<a href="#appendix-C.1" class="section-number selfRef">C.1. </a><a href="#name-integer-representation-exam" class="section-name selfRef">Integer Representation Examples</a>
+        </h3>
+<p id="appendix-C.1-1">
                     This section shows the representation of integer values in
-                    detail (see <a href="#integer.representation" class="xref">Section 5.1</a>).<a href="#section-c.1-1" class="pilcrow">¶</a></p>
+                    detail (see <a href="#integer.representation" class="xref">Section 5.1</a>).<a href="#appendix-C.1-1" class="pilcrow">¶</a></p>
 <div id="integer.representation.example1">
-<section id="section-c.1.1">
-          <h3 id="name-example-1-encoding-10-using">
-<a href="#section-c.1.1" class="section-number selfRef">C.1.1. </a><a href="#name-example-1-encoding-10-using" class="section-name selfRef">Example 1: Encoding 10 Using a 5-Bit Prefix</a>
-          </h3>
-<p id="section-c.1.1-1">
-                        The value 10 is to be encoded with a 5-bit prefix.<a href="#section-c.1.1-1" class="pilcrow">¶</a></p>
+<section id="appendix-C.1.1">
+          <h4 id="name-example-1-encoding-10-using">
+<a href="#appendix-C.1.1" class="section-number selfRef">C.1.1. </a><a href="#name-example-1-encoding-10-using" class="section-name selfRef">Example 1: Encoding 10 Using a 5-Bit Prefix</a>
+          </h4>
+<p id="appendix-C.1.1-1">
+                        The value 10 is to be encoded with a 5-bit prefix.<a href="#appendix-C.1.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-c.1.1-2.1">
+<li class="normal" id="appendix-C.1.1-2.1">
                                 10 is less than 31 (2<sup>5</sup> - 1) and
-                                is represented using the 5-bit prefix.<a href="#section-c.1.1-2.1" class="pilcrow">¶</a>
+                                is represented using the 5-bit prefix.<a href="#appendix-C.1.1-2.1" class="pilcrow">¶</a>
 </li>
           </ul>
-<div class="artwork art-text alignLeft art-example" id="section-c.1.1-3">
+<div class="artwork art-text alignLeft art-example" id="appendix-C.1.1-3">
 <pre>
   0   1   2   3   4   5   6   7
 +---+---+---+---+---+---+---+---+
 | X | X | X | 0 | 1 | 0 | 1 | 0 |   10 stored on 5 bits
 +---+---+---+---+---+---+---+---+
-</pre><a href="#section-c.1.1-3" class="pilcrow">¶</a>
+</pre><a href="#appendix-C.1.1-3" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
 <div id="integer.representation.example2">
-<section id="section-c.1.2">
-          <h3 id="name-example-2-encoding-1337-usi">
-<a href="#section-c.1.2" class="section-number selfRef">C.1.2. </a><a href="#name-example-2-encoding-1337-usi" class="section-name selfRef">Example 2: Encoding 1337 Using a 5-Bit Prefix</a>
-          </h3>
-<p id="section-c.1.2-1">
-                        The value I=1337 is to be encoded with a 5-bit prefix.<a href="#section-c.1.2-1" class="pilcrow">¶</a></p>
-<ul class="ulEmpty normal">
-<li class="ulEmpty normal" id="section-c.1.2-2.1">
-                                1337 is greater than 31 (2<sup>5</sup> - 1).<a href="#section-c.1.2-2.1" class="pilcrow">¶</a>
+<section id="appendix-C.1.2">
+          <h4 id="name-example-2-encoding-1337-usi">
+<a href="#appendix-C.1.2" class="section-number selfRef">C.1.2. </a><a href="#name-example-2-encoding-1337-usi" class="section-name selfRef">Example 2: Encoding 1337 Using a 5-Bit Prefix</a>
+          </h4>
+<p id="appendix-C.1.2-1">
+                        The value I=1337 is to be encoded with a 5-bit prefix.<a href="#appendix-C.1.2-1" class="pilcrow">¶</a></p>
+<ul class="normal ulEmpty">
+<li class="normal ulEmpty" id="appendix-C.1.2-2.1">
+                                1337 is greater than 31 (2<sup>5</sup> - 1).<a href="#appendix-C.1.2-2.1" class="pilcrow">¶</a>
 </li>
-            <li class="ulEmpty normal" id="section-c.1.2-2.2">
+            <li class="normal ulEmpty" id="appendix-C.1.2-2.2">
               <ul class="normal">
-<li class="normal" id="section-c.1.2-2.2.1.1">The 5-bit prefix is filled with its max
-                                    value (31).<a href="#section-c.1.2-2.2.1.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-C.1.2-2.2.1.1">The 5-bit prefix is filled with its max
+                                    value (31).<a href="#appendix-C.1.2-2.2.1.1" class="pilcrow">¶</a>
 </li>
               </ul>
 </li>
-            <li class="ulEmpty normal" id="section-c.1.2-2.3">I = 1337 - (2<sup>5</sup> - 1) = 1306.<a href="#section-c.1.2-2.3" class="pilcrow">¶</a>
+            <li class="normal ulEmpty" id="appendix-C.1.2-2.3">I = 1337 - (2<sup>5</sup> - 1) = 1306.<a href="#appendix-C.1.2-2.3" class="pilcrow">¶</a>
 </li>
-            <li class="ulEmpty normal" id="section-c.1.2-2.4">
+            <li class="normal ulEmpty" id="appendix-C.1.2-2.4">
               <ul class="normal">
-<li class="normal" id="section-c.1.2-2.4.1.1">I (1306) is greater than or equal to 128,
-                                    so the while loop body executes:<a href="#section-c.1.2-2.4.1.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-C.1.2-2.4.1.1">I (1306) is greater than or equal to 128,
+                                    so the while loop body executes:<a href="#appendix-C.1.2-2.4.1.1" class="pilcrow">¶</a>
 </li>
-                <li class="normal" id="section-c.1.2-2.4.1.2">
+                <li class="normal" id="appendix-C.1.2-2.4.1.2">
                   <ul class="normal">
-<li class="normal" id="section-c.1.2-2.4.1.2.1.1">I % 128 == 26<a href="#section-c.1.2-2.4.1.2.1.1" class="pilcrow">¶</a>
+<li class="normal" id="appendix-C.1.2-2.4.1.2.1.1">I % 128 == 26<a href="#appendix-C.1.2-2.4.1.2.1.1" class="pilcrow">¶</a>
 </li>
-                    <li class="normal" id="section-c.1.2-2.4.1.2.1.2">26 + 128 == 154<a href="#section-c.1.2-2.4.1.2.1.2" class="pilcrow">¶</a>
+                    <li class="normal" id="appendix-C.1.2-2.4.1.2.1.2">26 + 128 == 154<a href="#appendix-C.1.2-2.4.1.2.1.2" class="pilcrow">¶</a>
 </li>
-                    <li class="normal" id="section-c.1.2-2.4.1.2.1.3">154 is encoded in 8 bits as:
-                                            10011010<a href="#section-c.1.2-2.4.1.2.1.3" class="pilcrow">¶</a>
+                    <li class="normal" id="appendix-C.1.2-2.4.1.2.1.3">154 is encoded in 8 bits as:
+                                            10011010<a href="#appendix-C.1.2-2.4.1.2.1.3" class="pilcrow">¶</a>
 </li>
-                    <li class="normal" id="section-c.1.2-2.4.1.2.1.4">I is set to 10 (1306 / 128 ==
-                                            10)<a href="#section-c.1.2-2.4.1.2.1.4" class="pilcrow">¶</a>
+                    <li class="normal" id="appendix-C.1.2-2.4.1.2.1.4">I is set to 10 (1306 / 128 ==
+                                            10)<a href="#appendix-C.1.2-2.4.1.2.1.4" class="pilcrow">¶</a>
 </li>
-                    <li class="normal" id="section-c.1.2-2.4.1.2.1.5">I is no longer greater than or
+                    <li class="normal" id="appendix-C.1.2-2.4.1.2.1.5">I is no longer greater than or
                                             equal to 128, so the while loop
-                                            terminates.<a href="#section-c.1.2-2.4.1.2.1.5" class="pilcrow">¶</a>
+                                            terminates.<a href="#appendix-C.1.2-2.4.1.2.1.5" class="pilcrow">¶</a>
 </li>
                   </ul>
 </li>
-                <li class="normal" id="section-c.1.2-2.4.1.3">
+                <li class="normal" id="appendix-C.1.2-2.4.1.3">
                                         I, now 10, is encoded in 8 bits as:
-                                        00001010.<a href="#section-c.1.2-2.4.1.3" class="pilcrow">¶</a>
+                                        00001010.<a href="#appendix-C.1.2-2.4.1.3" class="pilcrow">¶</a>
 </li>
               </ul>
 </li>
-            <li class="ulEmpty normal" id="section-c.1.2-2.5">The process ends.<a href="#section-c.1.2-2.5" class="pilcrow">¶</a>
+            <li class="normal ulEmpty" id="appendix-C.1.2-2.5">The process ends.<a href="#appendix-C.1.2-2.5" class="pilcrow">¶</a>
 </li>
           </ul>
-<div class="artwork art-text alignLeft art-example" id="section-c.1.2-3">
+<div class="artwork art-text alignLeft art-example" id="appendix-C.1.2-3">
 <pre>
   0   1   2   3   4   5   6   7
 +---+---+---+---+---+---+---+---+
@@ -3357,64 +3520,64 @@ EOS (256)  |11111111|11111111|11111111|111111      3fffffff  [30]
 | 1 | 0 | 0 | 1 | 1 | 0 | 1 | 0 |  1306&gt;=128, encode(154), I=1306/128
 | 0 | 0 | 0 | 0 | 1 | 0 | 1 | 0 |  10&lt;128, encode(10), done
 +---+---+---+---+---+---+---+---+
-</pre><a href="#section-c.1.2-3" class="pilcrow">¶</a>
+</pre><a href="#appendix-C.1.2-3" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
 <div id="integer.representation.example3">
-<section id="section-c.1.3">
-          <h3 id="name-example-3-encoding-42-start">
-<a href="#section-c.1.3" class="section-number selfRef">C.1.3. </a><a href="#name-example-3-encoding-42-start" class="section-name selfRef">Example 3: Encoding 42 Starting at an Octet Boundary</a>
-          </h3>
-<p id="section-c.1.3-1">
+<section id="appendix-C.1.3">
+          <h4 id="name-example-3-encoding-42-start">
+<a href="#appendix-C.1.3" class="section-number selfRef">C.1.3. </a><a href="#name-example-3-encoding-42-start" class="section-name selfRef">Example 3: Encoding 42 Starting at an Octet Boundary</a>
+          </h4>
+<p id="appendix-C.1.3-1">
                         The value 42 is to be encoded starting at an
                         octet boundary. This implies that a 8-bit prefix is
-                        used.<a href="#section-c.1.3-1" class="pilcrow">¶</a></p>
+                        used.<a href="#appendix-C.1.3-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-c.1.3-2.1">
+<li class="normal" id="appendix-C.1.3-2.1">
                                 42 is less than 255 (2<sup>8</sup> - 1) and
-                                is represented using the 8-bit prefix.<a href="#section-c.1.3-2.1" class="pilcrow">¶</a>
+                                is represented using the 8-bit prefix.<a href="#appendix-C.1.3-2.1" class="pilcrow">¶</a>
 </li>
           </ul>
-<div class="artwork art-text alignLeft art-example" id="section-c.1.3-3">
+<div class="artwork art-text alignLeft art-example" id="appendix-C.1.3-3">
 <pre>
   0   1   2   3   4   5   6   7
 +---+---+---+---+---+---+---+---+
 | 0 | 0 | 1 | 0 | 1 | 0 | 1 | 0 |   42 stored on 8 bits
 +---+---+---+---+---+---+---+---+
-</pre><a href="#section-c.1.3-3" class="pilcrow">¶</a>
+</pre><a href="#appendix-C.1.3-3" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
 </section>
 </div>
 <div id="header.field.representation.examples">
-<section id="section-c.2">
-        <h2 id="name-header-field-representation-e">
-<a href="#section-c.2" class="section-number selfRef">C.2. </a><a href="#name-header-field-representation-e" class="section-name selfRef">Header Field Representation Examples</a>
-        </h2>
-<p id="section-c.2-1">
-        This section shows several independent representation examples.<a href="#section-c.2-1" class="pilcrow">¶</a></p>
-<section id="section-c.2.1">
-          <h3 id="name-literal-header-field-with-ind">
-<a href="#section-c.2.1" class="section-number selfRef">C.2.1. </a><a href="#name-literal-header-field-with-ind" class="section-name selfRef">Literal Header Field with Indexing</a>
-          </h3>
-<p id="section-c.2.1-1">
+<section id="appendix-C.2">
+        <h3 id="name-header-field-representation-e">
+<a href="#appendix-C.2" class="section-number selfRef">C.2. </a><a href="#name-header-field-representation-e" class="section-name selfRef">Header Field Representation Examples</a>
+        </h3>
+<p id="appendix-C.2-1">
+        This section shows several independent representation examples.<a href="#appendix-C.2-1" class="pilcrow">¶</a></p>
+<section id="appendix-C.2.1">
+          <h4 id="name-literal-header-field-with-ind">
+<a href="#appendix-C.2.1" class="section-number selfRef">C.2.1. </a><a href="#name-literal-header-field-with-ind" class="section-name selfRef">Literal Header Field with Indexing</a>
+          </h4>
+<p id="appendix-C.2.1-1">
             The header field representation uses a literal name and a literal
-            value. The header field is added to the dynamic table.<a href="#section-c.2.1-1" class="pilcrow">¶</a></p>
-<p id="section-c.2.1-2" class="keepWithNext">Header list to encode:<a href="#section-c.2.1-2" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.2.1-3">
+            value. The header field is added to the dynamic table.<a href="#appendix-C.2.1-1" class="pilcrow">¶</a></p>
+<p id="appendix-C.2.1-2" class="keepWithNext">Header list to encode:<a href="#appendix-C.2.1-2" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.2.1-3">
 <pre>
-custom-key: custom-header</pre><a href="#section-c.2.1-3" class="pilcrow">¶</a>
+custom-key: custom-header</pre><a href="#appendix-C.2.1-3" class="pilcrow">¶</a>
 </div>
-<p id="section-c.2.1-4" class="keepWithNext">Hex dump of encoded data:<a href="#section-c.2.1-4" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.2.1-5">
+<p id="appendix-C.2.1-4" class="keepWithNext">Hex dump of encoded data:<a href="#appendix-C.2.1-4" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.2.1-5">
 <pre>
 400a 6375 7374 6f6d 2d6b 6579 0d63 7573 | @.custom-key.cus
-746f 6d2d 6865 6164 6572                | tom-header</pre><a href="#section-c.2.1-5" class="pilcrow">¶</a>
+746f 6d2d 6865 6164 6572                | tom-header</pre><a href="#appendix-C.2.1-5" class="pilcrow">¶</a>
 </div>
-<p id="section-c.2.1-6" class="keepWithNext">Decoding process:<a href="#section-c.2.1-6" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.2.1-7">
+<p id="appendix-C.2.1-6" class="keepWithNext">Decoding process:<a href="#appendix-C.2.1-6" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.2.1-7">
 <pre>
 40                                      | == Literal indexed ==
 0a                                      |   Literal name (len = 10)
@@ -3422,154 +3585,154 @@ custom-key: custom-header</pre><a href="#section-c.2.1-3" class="pilcrow">¶</a>
 0d                                      |   Literal value (len = 13)
 6375 7374 6f6d 2d68 6561 6465 72        | custom-header
                                         | -&gt; custom-key:
-                                        |   custom-header</pre><a href="#section-c.2.1-7" class="pilcrow">¶</a>
+                                        |   custom-header</pre><a href="#appendix-C.2.1-7" class="pilcrow">¶</a>
 </div>
-<p id="section-c.2.1-8" class="keepWithNext">Dynamic Table (after decoding):<a href="#section-c.2.1-8" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.2.1-9">
+<p id="appendix-C.2.1-8" class="keepWithNext">Dynamic Table (after decoding):<a href="#appendix-C.2.1-8" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.2.1-9">
 <pre>
 [  1] (s =  55) custom-key: custom-header
-      Table size:  55</pre><a href="#section-c.2.1-9" class="pilcrow">¶</a>
+      Table size:  55</pre><a href="#appendix-C.2.1-9" class="pilcrow">¶</a>
 </div>
-<p id="section-c.2.1-10" class="keepWithNext">Decoded header list:<a href="#section-c.2.1-10" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.2.1-11">
+<p id="appendix-C.2.1-10" class="keepWithNext">Decoded header list:<a href="#appendix-C.2.1-10" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.2.1-11">
 <pre>
-custom-key: custom-header</pre><a href="#section-c.2.1-11" class="pilcrow">¶</a>
+custom-key: custom-header</pre><a href="#appendix-C.2.1-11" class="pilcrow">¶</a>
 </div>
 </section>
-<section id="section-c.2.2">
-          <h3 id="name-literal-header-field-without-i">
-<a href="#section-c.2.2" class="section-number selfRef">C.2.2. </a><a href="#name-literal-header-field-without-i" class="section-name selfRef">Literal Header Field without Indexing</a>
-          </h3>
-<p id="section-c.2.2-1">
+<section id="appendix-C.2.2">
+          <h4 id="name-literal-header-field-without-i">
+<a href="#appendix-C.2.2" class="section-number selfRef">C.2.2. </a><a href="#name-literal-header-field-without-i" class="section-name selfRef">Literal Header Field without Indexing</a>
+          </h4>
+<p id="appendix-C.2.2-1">
             The header field representation uses an indexed name and a literal
-            value. The header field is not added to the dynamic table.<a href="#section-c.2.2-1" class="pilcrow">¶</a></p>
-<p id="section-c.2.2-2" class="keepWithNext">Header list to encode:<a href="#section-c.2.2-2" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.2.2-3">
+            value. The header field is not added to the dynamic table.<a href="#appendix-C.2.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-C.2.2-2" class="keepWithNext">Header list to encode:<a href="#appendix-C.2.2-2" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.2.2-3">
 <pre>
-:path: /sample/path</pre><a href="#section-c.2.2-3" class="pilcrow">¶</a>
+:path: /sample/path</pre><a href="#appendix-C.2.2-3" class="pilcrow">¶</a>
 </div>
-<p id="section-c.2.2-4" class="keepWithNext">Hex dump of encoded data:<a href="#section-c.2.2-4" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.2.2-5">
+<p id="appendix-C.2.2-4" class="keepWithNext">Hex dump of encoded data:<a href="#appendix-C.2.2-4" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.2.2-5">
 <pre>
-040c 2f73 616d 706c 652f 7061 7468      | ../sample/path</pre><a href="#section-c.2.2-5" class="pilcrow">¶</a>
+040c 2f73 616d 706c 652f 7061 7468      | ../sample/path</pre><a href="#appendix-C.2.2-5" class="pilcrow">¶</a>
 </div>
-<p id="section-c.2.2-6" class="keepWithNext">Decoding process:<a href="#section-c.2.2-6" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.2.2-7">
+<p id="appendix-C.2.2-6" class="keepWithNext">Decoding process:<a href="#appendix-C.2.2-6" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.2.2-7">
 <pre>
 04                                      | == Literal not indexed ==
                                         |   Indexed name (idx = 4)
                                         |     :path
 0c                                      |   Literal value (len = 12)
 2f73 616d 706c 652f 7061 7468           | /sample/path
-                                        | -&gt; :path: /sample/path</pre><a href="#section-c.2.2-7" class="pilcrow">¶</a>
+                                        | -&gt; :path: /sample/path</pre><a href="#appendix-C.2.2-7" class="pilcrow">¶</a>
 </div>
-<p id="section-c.2.2-8">
-          Dynamic table (after decoding): empty.<a href="#section-c.2.2-8" class="pilcrow">¶</a></p>
-<p id="section-c.2.2-9" class="keepWithNext">Decoded header list:<a href="#section-c.2.2-9" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.2.2-10">
+<p id="appendix-C.2.2-8">
+          Dynamic table (after decoding): empty.<a href="#appendix-C.2.2-8" class="pilcrow">¶</a></p>
+<p id="appendix-C.2.2-9" class="keepWithNext">Decoded header list:<a href="#appendix-C.2.2-9" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.2.2-10">
 <pre>
-:path: /sample/path</pre><a href="#section-c.2.2-10" class="pilcrow">¶</a>
+:path: /sample/path</pre><a href="#appendix-C.2.2-10" class="pilcrow">¶</a>
 </div>
 </section>
-<section id="section-c.2.3">
-          <h3 id="name-literal-header-field-never-ind">
-<a href="#section-c.2.3" class="section-number selfRef">C.2.3. </a><a href="#name-literal-header-field-never-ind" class="section-name selfRef">Literal Header Field Never Indexed</a>
-          </h3>
-<p id="section-c.2.3-1">
+<section id="appendix-C.2.3">
+          <h4 id="name-literal-header-field-never-ind">
+<a href="#appendix-C.2.3" class="section-number selfRef">C.2.3. </a><a href="#name-literal-header-field-never-ind" class="section-name selfRef">Literal Header Field Never Indexed</a>
+          </h4>
+<p id="appendix-C.2.3-1">
             The header field representation uses a literal name and a literal
             value. The header field is not added to the dynamic table and must
-            use the same representation if re-encoded by an intermediary.<a href="#section-c.2.3-1" class="pilcrow">¶</a></p>
-<p id="section-c.2.3-2" class="keepWithNext">Header list to encode:<a href="#section-c.2.3-2" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.2.3-3">
+            use the same representation if re-encoded by an intermediary.<a href="#appendix-C.2.3-1" class="pilcrow">¶</a></p>
+<p id="appendix-C.2.3-2" class="keepWithNext">Header list to encode:<a href="#appendix-C.2.3-2" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.2.3-3">
 <pre>
-password: secret</pre><a href="#section-c.2.3-3" class="pilcrow">¶</a>
+password: secret</pre><a href="#appendix-C.2.3-3" class="pilcrow">¶</a>
 </div>
-<p id="section-c.2.3-4" class="keepWithNext">Hex dump of encoded data:<a href="#section-c.2.3-4" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.2.3-5">
+<p id="appendix-C.2.3-4" class="keepWithNext">Hex dump of encoded data:<a href="#appendix-C.2.3-4" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.2.3-5">
 <pre>
 1008 7061 7373 776f 7264 0673 6563 7265 | ..password.secre
-74                                      | t</pre><a href="#section-c.2.3-5" class="pilcrow">¶</a>
+74                                      | t</pre><a href="#appendix-C.2.3-5" class="pilcrow">¶</a>
 </div>
-<p id="section-c.2.3-6" class="keepWithNext">Decoding process:<a href="#section-c.2.3-6" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.2.3-7">
+<p id="appendix-C.2.3-6" class="keepWithNext">Decoding process:<a href="#appendix-C.2.3-6" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.2.3-7">
 <pre>
 10                                      | == Literal never indexed ==
 08                                      |   Literal name (len = 8)
 7061 7373 776f 7264                     | password
 06                                      |   Literal value (len = 6)
 7365 6372 6574                          | secret
-                                        | -&gt; password: secret</pre><a href="#section-c.2.3-7" class="pilcrow">¶</a>
+                                        | -&gt; password: secret</pre><a href="#appendix-C.2.3-7" class="pilcrow">¶</a>
 </div>
-<p id="section-c.2.3-8">
-          Dynamic table (after decoding): empty.<a href="#section-c.2.3-8" class="pilcrow">¶</a></p>
-<p id="section-c.2.3-9" class="keepWithNext">Decoded header list:<a href="#section-c.2.3-9" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.2.3-10">
+<p id="appendix-C.2.3-8">
+          Dynamic table (after decoding): empty.<a href="#appendix-C.2.3-8" class="pilcrow">¶</a></p>
+<p id="appendix-C.2.3-9" class="keepWithNext">Decoded header list:<a href="#appendix-C.2.3-9" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.2.3-10">
 <pre>
-password: secret</pre><a href="#section-c.2.3-10" class="pilcrow">¶</a>
+password: secret</pre><a href="#appendix-C.2.3-10" class="pilcrow">¶</a>
 </div>
 </section>
-<section id="section-c.2.4">
-          <h3 id="name-indexed-header-field-2">
-<a href="#section-c.2.4" class="section-number selfRef">C.2.4. </a><a href="#name-indexed-header-field-2" class="section-name selfRef">Indexed Header Field</a>
-          </h3>
-<p id="section-c.2.4-1">
+<section id="appendix-C.2.4">
+          <h4 id="name-indexed-header-field-2">
+<a href="#appendix-C.2.4" class="section-number selfRef">C.2.4. </a><a href="#name-indexed-header-field-2" class="section-name selfRef">Indexed Header Field</a>
+          </h4>
+<p id="appendix-C.2.4-1">
             The header field representation uses an indexed header field from
-            the static table.<a href="#section-c.2.4-1" class="pilcrow">¶</a></p>
-<p id="section-c.2.4-2" class="keepWithNext">Header list to encode:<a href="#section-c.2.4-2" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.2.4-3">
+            the static table.<a href="#appendix-C.2.4-1" class="pilcrow">¶</a></p>
+<p id="appendix-C.2.4-2" class="keepWithNext">Header list to encode:<a href="#appendix-C.2.4-2" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.2.4-3">
 <pre>
-:method: GET</pre><a href="#section-c.2.4-3" class="pilcrow">¶</a>
+:method: GET</pre><a href="#appendix-C.2.4-3" class="pilcrow">¶</a>
 </div>
-<p id="section-c.2.4-4" class="keepWithNext">Hex dump of encoded data:<a href="#section-c.2.4-4" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.2.4-5">
+<p id="appendix-C.2.4-4" class="keepWithNext">Hex dump of encoded data:<a href="#appendix-C.2.4-4" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.2.4-5">
 <pre>
-82                                      | .</pre><a href="#section-c.2.4-5" class="pilcrow">¶</a>
+82                                      | .</pre><a href="#appendix-C.2.4-5" class="pilcrow">¶</a>
 </div>
-<p id="section-c.2.4-6" class="keepWithNext">Decoding process:<a href="#section-c.2.4-6" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.2.4-7">
+<p id="appendix-C.2.4-6" class="keepWithNext">Decoding process:<a href="#appendix-C.2.4-6" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.2.4-7">
 <pre>
 82                                      | == Indexed - Add ==
                                         |   idx = 2
-                                        | -&gt; :method: GET</pre><a href="#section-c.2.4-7" class="pilcrow">¶</a>
+                                        | -&gt; :method: GET</pre><a href="#appendix-C.2.4-7" class="pilcrow">¶</a>
 </div>
-<p id="section-c.2.4-8">
-          Dynamic table (after decoding): empty.<a href="#section-c.2.4-8" class="pilcrow">¶</a></p>
-<p id="section-c.2.4-9" class="keepWithNext">Decoded header list:<a href="#section-c.2.4-9" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.2.4-10">
+<p id="appendix-C.2.4-8">
+          Dynamic table (after decoding): empty.<a href="#appendix-C.2.4-8" class="pilcrow">¶</a></p>
+<p id="appendix-C.2.4-9" class="keepWithNext">Decoded header list:<a href="#appendix-C.2.4-9" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.2.4-10">
 <pre>
-:method: GET</pre><a href="#section-c.2.4-10" class="pilcrow">¶</a>
+:method: GET</pre><a href="#appendix-C.2.4-10" class="pilcrow">¶</a>
 </div>
 </section>
 </section>
 </div>
 <div id="request.examples.without.huffman.coding">
-<section id="section-c.3">
-        <h2 id="name-request-examples-without-hu">
-<a href="#section-c.3" class="section-number selfRef">C.3. </a><a href="#name-request-examples-without-hu" class="section-name selfRef">Request Examples without Huffman Coding</a>
-        </h2>
-<p id="section-c.3-1">
+<section id="appendix-C.3">
+        <h3 id="name-request-examples-without-hu">
+<a href="#appendix-C.3" class="section-number selfRef">C.3. </a><a href="#name-request-examples-without-hu" class="section-name selfRef">Request Examples without Huffman Coding</a>
+        </h3>
+<p id="appendix-C.3-1">
         This section shows several consecutive header lists, corresponding to
-        HTTP requests, on the same connection.<a href="#section-c.3-1" class="pilcrow">¶</a></p>
-<section id="section-c.3.1">
-          <h3 id="name-first-request">
-<a href="#section-c.3.1" class="section-number selfRef">C.3.1. </a><a href="#name-first-request" class="section-name selfRef">First Request</a>
-          </h3>
-<p id="section-c.3.1-1" class="keepWithNext">Header list to encode:<a href="#section-c.3.1-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.3.1-2">
+        HTTP requests, on the same connection.<a href="#appendix-C.3-1" class="pilcrow">¶</a></p>
+<section id="appendix-C.3.1">
+          <h4 id="name-first-request">
+<a href="#appendix-C.3.1" class="section-number selfRef">C.3.1. </a><a href="#name-first-request" class="section-name selfRef">First Request</a>
+          </h4>
+<p id="appendix-C.3.1-1" class="keepWithNext">Header list to encode:<a href="#appendix-C.3.1-1" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.3.1-2">
 <pre>
 :method: GET
 :scheme: http
 :path: /
-:authority: www.example.com</pre><a href="#section-c.3.1-2" class="pilcrow">¶</a>
+:authority: www.example.com</pre><a href="#appendix-C.3.1-2" class="pilcrow">¶</a>
 </div>
-<p id="section-c.3.1-3" class="keepWithNext">Hex dump of encoded data:<a href="#section-c.3.1-3" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.3.1-4">
+<p id="appendix-C.3.1-3" class="keepWithNext">Hex dump of encoded data:<a href="#appendix-C.3.1-3" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.3.1-4">
 <pre>
 8286 8441 0f77 7777 2e65 7861 6d70 6c65 | ...A.www.example
-2e63 6f6d                               | .com</pre><a href="#section-c.3.1-4" class="pilcrow">¶</a>
+2e63 6f6d                               | .com</pre><a href="#appendix-C.3.1-4" class="pilcrow">¶</a>
 </div>
-<p id="section-c.3.1-5" class="keepWithNext">Decoding process:<a href="#section-c.3.1-5" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.3.1-6">
+<p id="appendix-C.3.1-5" class="keepWithNext">Decoding process:<a href="#appendix-C.3.1-5" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.3.1-6">
 <pre>
 82                                      | == Indexed - Add ==
                                         |   idx = 2
@@ -3586,43 +3749,43 @@ password: secret</pre><a href="#section-c.2.3-10" class="pilcrow">¶</a>
 0f                                      |   Literal value (len = 15)
 7777 772e 6578 616d 706c 652e 636f 6d   | www.example.com
                                         | -&gt; :authority:
-                                        |   www.example.com</pre><a href="#section-c.3.1-6" class="pilcrow">¶</a>
+                                        |   www.example.com</pre><a href="#appendix-C.3.1-6" class="pilcrow">¶</a>
 </div>
-<p id="section-c.3.1-7" class="keepWithNext">Dynamic Table (after decoding):<a href="#section-c.3.1-7" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.3.1-8">
+<p id="appendix-C.3.1-7" class="keepWithNext">Dynamic Table (after decoding):<a href="#appendix-C.3.1-7" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.3.1-8">
 <pre>
 [  1] (s =  57) :authority: www.example.com
-      Table size:  57</pre><a href="#section-c.3.1-8" class="pilcrow">¶</a>
+      Table size:  57</pre><a href="#appendix-C.3.1-8" class="pilcrow">¶</a>
 </div>
-<p id="section-c.3.1-9" class="keepWithNext">Decoded header list:<a href="#section-c.3.1-9" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.3.1-10">
+<p id="appendix-C.3.1-9" class="keepWithNext">Decoded header list:<a href="#appendix-C.3.1-9" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.3.1-10">
 <pre>
 :method: GET
 :scheme: http
 :path: /
-:authority: www.example.com</pre><a href="#section-c.3.1-10" class="pilcrow">¶</a>
+:authority: www.example.com</pre><a href="#appendix-C.3.1-10" class="pilcrow">¶</a>
 </div>
 </section>
-<section id="section-c.3.2">
-          <h3 id="name-second-request">
-<a href="#section-c.3.2" class="section-number selfRef">C.3.2. </a><a href="#name-second-request" class="section-name selfRef">Second Request</a>
-          </h3>
-<p id="section-c.3.2-1" class="keepWithNext">Header list to encode:<a href="#section-c.3.2-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.3.2-2">
+<section id="appendix-C.3.2">
+          <h4 id="name-second-request">
+<a href="#appendix-C.3.2" class="section-number selfRef">C.3.2. </a><a href="#name-second-request" class="section-name selfRef">Second Request</a>
+          </h4>
+<p id="appendix-C.3.2-1" class="keepWithNext">Header list to encode:<a href="#appendix-C.3.2-1" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.3.2-2">
 <pre>
 :method: GET
 :scheme: http
 :path: /
 :authority: www.example.com
-cache-control: no-cache</pre><a href="#section-c.3.2-2" class="pilcrow">¶</a>
+cache-control: no-cache</pre><a href="#appendix-C.3.2-2" class="pilcrow">¶</a>
 </div>
-<p id="section-c.3.2-3" class="keepWithNext">Hex dump of encoded data:<a href="#section-c.3.2-3" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.3.2-4">
+<p id="appendix-C.3.2-3" class="keepWithNext">Hex dump of encoded data:<a href="#appendix-C.3.2-3" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.3.2-4">
 <pre>
-8286 84be 5808 6e6f 2d63 6163 6865      | ....X.no-cache</pre><a href="#section-c.3.2-4" class="pilcrow">¶</a>
+8286 84be 5808 6e6f 2d63 6163 6865      | ....X.no-cache</pre><a href="#appendix-C.3.2-4" class="pilcrow">¶</a>
 </div>
-<p id="section-c.3.2-5" class="keepWithNext">Decoding process:<a href="#section-c.3.2-5" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.3.2-6">
+<p id="appendix-C.3.2-5" class="keepWithNext">Decoding process:<a href="#appendix-C.3.2-5" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.3.2-6">
 <pre>
 82                                      | == Indexed - Add ==
                                         |   idx = 2
@@ -3642,46 +3805,46 @@ be                                      | == Indexed - Add ==
                                         |     cache-control
 08                                      |   Literal value (len = 8)
 6e6f 2d63 6163 6865                     | no-cache
-                                        | -&gt; cache-control: no-cache</pre><a href="#section-c.3.2-6" class="pilcrow">¶</a>
+                                        | -&gt; cache-control: no-cache</pre><a href="#appendix-C.3.2-6" class="pilcrow">¶</a>
 </div>
-<p id="section-c.3.2-7" class="keepWithNext">Dynamic Table (after decoding):<a href="#section-c.3.2-7" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.3.2-8">
+<p id="appendix-C.3.2-7" class="keepWithNext">Dynamic Table (after decoding):<a href="#appendix-C.3.2-7" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.3.2-8">
 <pre>
 [  1] (s =  53) cache-control: no-cache
 [  2] (s =  57) :authority: www.example.com
-      Table size: 110</pre><a href="#section-c.3.2-8" class="pilcrow">¶</a>
+      Table size: 110</pre><a href="#appendix-C.3.2-8" class="pilcrow">¶</a>
 </div>
-<p id="section-c.3.2-9" class="keepWithNext">Decoded header list:<a href="#section-c.3.2-9" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.3.2-10">
+<p id="appendix-C.3.2-9" class="keepWithNext">Decoded header list:<a href="#appendix-C.3.2-9" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.3.2-10">
 <pre>
 :method: GET
 :scheme: http
 :path: /
 :authority: www.example.com
-cache-control: no-cache</pre><a href="#section-c.3.2-10" class="pilcrow">¶</a>
+cache-control: no-cache</pre><a href="#appendix-C.3.2-10" class="pilcrow">¶</a>
 </div>
 </section>
-<section id="section-c.3.3">
-          <h3 id="name-third-request">
-<a href="#section-c.3.3" class="section-number selfRef">C.3.3. </a><a href="#name-third-request" class="section-name selfRef">Third Request</a>
-          </h3>
-<p id="section-c.3.3-1" class="keepWithNext">Header list to encode:<a href="#section-c.3.3-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.3.3-2">
+<section id="appendix-C.3.3">
+          <h4 id="name-third-request">
+<a href="#appendix-C.3.3" class="section-number selfRef">C.3.3. </a><a href="#name-third-request" class="section-name selfRef">Third Request</a>
+          </h4>
+<p id="appendix-C.3.3-1" class="keepWithNext">Header list to encode:<a href="#appendix-C.3.3-1" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.3.3-2">
 <pre>
 :method: GET
 :scheme: https
 :path: /index.html
 :authority: www.example.com
-custom-key: custom-value</pre><a href="#section-c.3.3-2" class="pilcrow">¶</a>
+custom-key: custom-value</pre><a href="#appendix-C.3.3-2" class="pilcrow">¶</a>
 </div>
-<p id="section-c.3.3-3" class="keepWithNext">Hex dump of encoded data:<a href="#section-c.3.3-3" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.3.3-4">
+<p id="appendix-C.3.3-3" class="keepWithNext">Hex dump of encoded data:<a href="#appendix-C.3.3-3" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.3.3-4">
 <pre>
 8287 85bf 400a 6375 7374 6f6d 2d6b 6579 | ....@.custom-key
-0c63 7573 746f 6d2d 7661 6c75 65        | .custom-value</pre><a href="#section-c.3.3-4" class="pilcrow">¶</a>
+0c63 7573 746f 6d2d 7661 6c75 65        | .custom-value</pre><a href="#appendix-C.3.3-4" class="pilcrow">¶</a>
 </div>
-<p id="section-c.3.3-5" class="keepWithNext">Decoding process:<a href="#section-c.3.3-5" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.3.3-6">
+<p id="appendix-C.3.3-5" class="keepWithNext">Decoding process:<a href="#appendix-C.3.3-5" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.3.3-6">
 <pre>
 82                                      | == Indexed - Add ==
                                         |   idx = 2
@@ -3702,56 +3865,56 @@ bf                                      | == Indexed - Add ==
 0c                                      |   Literal value (len = 12)
 6375 7374 6f6d 2d76 616c 7565           | custom-value
                                         | -&gt; custom-key:
-                                        |   custom-value</pre><a href="#section-c.3.3-6" class="pilcrow">¶</a>
+                                        |   custom-value</pre><a href="#appendix-C.3.3-6" class="pilcrow">¶</a>
 </div>
-<p id="section-c.3.3-7" class="keepWithNext">Dynamic Table (after decoding):<a href="#section-c.3.3-7" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.3.3-8">
+<p id="appendix-C.3.3-7" class="keepWithNext">Dynamic Table (after decoding):<a href="#appendix-C.3.3-7" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.3.3-8">
 <pre>
 [  1] (s =  54) custom-key: custom-value
 [  2] (s =  53) cache-control: no-cache
 [  3] (s =  57) :authority: www.example.com
-      Table size: 164</pre><a href="#section-c.3.3-8" class="pilcrow">¶</a>
+      Table size: 164</pre><a href="#appendix-C.3.3-8" class="pilcrow">¶</a>
 </div>
-<p id="section-c.3.3-9" class="keepWithNext">Decoded header list:<a href="#section-c.3.3-9" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.3.3-10">
+<p id="appendix-C.3.3-9" class="keepWithNext">Decoded header list:<a href="#appendix-C.3.3-9" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.3.3-10">
 <pre>
 :method: GET
 :scheme: https
 :path: /index.html
 :authority: www.example.com
-custom-key: custom-value</pre><a href="#section-c.3.3-10" class="pilcrow">¶</a>
+custom-key: custom-value</pre><a href="#appendix-C.3.3-10" class="pilcrow">¶</a>
 </div>
 </section>
 </section>
 </div>
 <div id="request.examples.with.huffman.coding">
-<section id="section-c.4">
-        <h2 id="name-request-examples-with-huffm">
-<a href="#section-c.4" class="section-number selfRef">C.4. </a><a href="#name-request-examples-with-huffm" class="section-name selfRef">Request Examples with Huffman Coding</a>
-        </h2>
-<p id="section-c.4-1">
+<section id="appendix-C.4">
+        <h3 id="name-request-examples-with-huffm">
+<a href="#appendix-C.4" class="section-number selfRef">C.4. </a><a href="#name-request-examples-with-huffm" class="section-name selfRef">Request Examples with Huffman Coding</a>
+        </h3>
+<p id="appendix-C.4-1">
         This section shows the same examples as the previous section but uses
-        Huffman encoding for the literal values.<a href="#section-c.4-1" class="pilcrow">¶</a></p>
-<section id="section-c.4.1">
-          <h3 id="name-first-request-2">
-<a href="#section-c.4.1" class="section-number selfRef">C.4.1. </a><a href="#name-first-request-2" class="section-name selfRef">First Request</a>
-          </h3>
-<p id="section-c.4.1-1" class="keepWithNext">Header list to encode:<a href="#section-c.4.1-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.4.1-2">
+        Huffman encoding for the literal values.<a href="#appendix-C.4-1" class="pilcrow">¶</a></p>
+<section id="appendix-C.4.1">
+          <h4 id="name-first-request-2">
+<a href="#appendix-C.4.1" class="section-number selfRef">C.4.1. </a><a href="#name-first-request-2" class="section-name selfRef">First Request</a>
+          </h4>
+<p id="appendix-C.4.1-1" class="keepWithNext">Header list to encode:<a href="#appendix-C.4.1-1" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.4.1-2">
 <pre>
 :method: GET
 :scheme: http
 :path: /
-:authority: www.example.com</pre><a href="#section-c.4.1-2" class="pilcrow">¶</a>
+:authority: www.example.com</pre><a href="#appendix-C.4.1-2" class="pilcrow">¶</a>
 </div>
-<p id="section-c.4.1-3" class="keepWithNext">Hex dump of encoded data:<a href="#section-c.4.1-3" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.4.1-4">
+<p id="appendix-C.4.1-3" class="keepWithNext">Hex dump of encoded data:<a href="#appendix-C.4.1-3" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.4.1-4">
 <pre>
 8286 8441 8cf1 e3c2 e5f2 3a6b a0ab 90f4 | ...A......:k....
-ff                                      | .</pre><a href="#section-c.4.1-4" class="pilcrow">¶</a>
+ff                                      | .</pre><a href="#appendix-C.4.1-4" class="pilcrow">¶</a>
 </div>
-<p id="section-c.4.1-5" class="keepWithNext">Decoding process:<a href="#section-c.4.1-5" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.4.1-6">
+<p id="appendix-C.4.1-5" class="keepWithNext">Decoding process:<a href="#appendix-C.4.1-5" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.4.1-6">
 <pre>
 82                                      | == Indexed - Add ==
                                         |   idx = 2
@@ -3771,43 +3934,43 @@ f1e3 c2e5 f23a 6ba0 ab90 f4ff           | .....:k.....
                                         |     Decoded:
                                         | www.example.com
                                         | -&gt; :authority:
-                                        |   www.example.com</pre><a href="#section-c.4.1-6" class="pilcrow">¶</a>
+                                        |   www.example.com</pre><a href="#appendix-C.4.1-6" class="pilcrow">¶</a>
 </div>
-<p id="section-c.4.1-7" class="keepWithNext">Dynamic Table (after decoding):<a href="#section-c.4.1-7" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.4.1-8">
+<p id="appendix-C.4.1-7" class="keepWithNext">Dynamic Table (after decoding):<a href="#appendix-C.4.1-7" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.4.1-8">
 <pre>
 [  1] (s =  57) :authority: www.example.com
-      Table size:  57</pre><a href="#section-c.4.1-8" class="pilcrow">¶</a>
+      Table size:  57</pre><a href="#appendix-C.4.1-8" class="pilcrow">¶</a>
 </div>
-<p id="section-c.4.1-9" class="keepWithNext">Decoded header list:<a href="#section-c.4.1-9" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.4.1-10">
+<p id="appendix-C.4.1-9" class="keepWithNext">Decoded header list:<a href="#appendix-C.4.1-9" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.4.1-10">
 <pre>
 :method: GET
 :scheme: http
 :path: /
-:authority: www.example.com</pre><a href="#section-c.4.1-10" class="pilcrow">¶</a>
+:authority: www.example.com</pre><a href="#appendix-C.4.1-10" class="pilcrow">¶</a>
 </div>
 </section>
-<section id="section-c.4.2">
-          <h3 id="name-second-request-2">
-<a href="#section-c.4.2" class="section-number selfRef">C.4.2. </a><a href="#name-second-request-2" class="section-name selfRef">Second Request</a>
-          </h3>
-<p id="section-c.4.2-1" class="keepWithNext">Header list to encode:<a href="#section-c.4.2-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.4.2-2">
+<section id="appendix-C.4.2">
+          <h4 id="name-second-request-2">
+<a href="#appendix-C.4.2" class="section-number selfRef">C.4.2. </a><a href="#name-second-request-2" class="section-name selfRef">Second Request</a>
+          </h4>
+<p id="appendix-C.4.2-1" class="keepWithNext">Header list to encode:<a href="#appendix-C.4.2-1" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.4.2-2">
 <pre>
 :method: GET
 :scheme: http
 :path: /
 :authority: www.example.com
-cache-control: no-cache</pre><a href="#section-c.4.2-2" class="pilcrow">¶</a>
+cache-control: no-cache</pre><a href="#appendix-C.4.2-2" class="pilcrow">¶</a>
 </div>
-<p id="section-c.4.2-3" class="keepWithNext">Hex dump of encoded data:<a href="#section-c.4.2-3" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.4.2-4">
+<p id="appendix-C.4.2-3" class="keepWithNext">Hex dump of encoded data:<a href="#appendix-C.4.2-3" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.4.2-4">
 <pre>
-8286 84be 5886 a8eb 1064 9cbf           | ....X....d..</pre><a href="#section-c.4.2-4" class="pilcrow">¶</a>
+8286 84be 5886 a8eb 1064 9cbf           | ....X....d..</pre><a href="#appendix-C.4.2-4" class="pilcrow">¶</a>
 </div>
-<p id="section-c.4.2-5" class="keepWithNext">Decoding process:<a href="#section-c.4.2-5" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.4.2-6">
+<p id="appendix-C.4.2-5" class="keepWithNext">Decoding process:<a href="#appendix-C.4.2-5" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.4.2-6">
 <pre>
 82                                      | == Indexed - Add ==
                                         |   idx = 2
@@ -3830,46 +3993,46 @@ be                                      | == Indexed - Add ==
 a8eb 1064 9cbf                          | ...d..
                                         |     Decoded:
                                         | no-cache
-                                        | -&gt; cache-control: no-cache</pre><a href="#section-c.4.2-6" class="pilcrow">¶</a>
+                                        | -&gt; cache-control: no-cache</pre><a href="#appendix-C.4.2-6" class="pilcrow">¶</a>
 </div>
-<p id="section-c.4.2-7" class="keepWithNext">Dynamic Table (after decoding):<a href="#section-c.4.2-7" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.4.2-8">
+<p id="appendix-C.4.2-7" class="keepWithNext">Dynamic Table (after decoding):<a href="#appendix-C.4.2-7" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.4.2-8">
 <pre>
 [  1] (s =  53) cache-control: no-cache
 [  2] (s =  57) :authority: www.example.com
-      Table size: 110</pre><a href="#section-c.4.2-8" class="pilcrow">¶</a>
+      Table size: 110</pre><a href="#appendix-C.4.2-8" class="pilcrow">¶</a>
 </div>
-<p id="section-c.4.2-9" class="keepWithNext">Decoded header list:<a href="#section-c.4.2-9" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.4.2-10">
+<p id="appendix-C.4.2-9" class="keepWithNext">Decoded header list:<a href="#appendix-C.4.2-9" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.4.2-10">
 <pre>
 :method: GET
 :scheme: http
 :path: /
 :authority: www.example.com
-cache-control: no-cache</pre><a href="#section-c.4.2-10" class="pilcrow">¶</a>
+cache-control: no-cache</pre><a href="#appendix-C.4.2-10" class="pilcrow">¶</a>
 </div>
 </section>
-<section id="section-c.4.3">
-          <h3 id="name-third-request-2">
-<a href="#section-c.4.3" class="section-number selfRef">C.4.3. </a><a href="#name-third-request-2" class="section-name selfRef">Third Request</a>
-          </h3>
-<p id="section-c.4.3-1" class="keepWithNext">Header list to encode:<a href="#section-c.4.3-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.4.3-2">
+<section id="appendix-C.4.3">
+          <h4 id="name-third-request-2">
+<a href="#appendix-C.4.3" class="section-number selfRef">C.4.3. </a><a href="#name-third-request-2" class="section-name selfRef">Third Request</a>
+          </h4>
+<p id="appendix-C.4.3-1" class="keepWithNext">Header list to encode:<a href="#appendix-C.4.3-1" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.4.3-2">
 <pre>
 :method: GET
 :scheme: https
 :path: /index.html
 :authority: www.example.com
-custom-key: custom-value</pre><a href="#section-c.4.3-2" class="pilcrow">¶</a>
+custom-key: custom-value</pre><a href="#appendix-C.4.3-2" class="pilcrow">¶</a>
 </div>
-<p id="section-c.4.3-3" class="keepWithNext">Hex dump of encoded data:<a href="#section-c.4.3-3" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.4.3-4">
+<p id="appendix-C.4.3-3" class="keepWithNext">Hex dump of encoded data:<a href="#appendix-C.4.3-3" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.4.3-4">
 <pre>
 8287 85bf 4088 25a8 49e9 5ba9 7d7f 8925 | ....@.%.I.[.}..%
-a849 e95b b8e8 b4bf                     | .I.[....</pre><a href="#section-c.4.3-4" class="pilcrow">¶</a>
+a849 e95b b8e8 b4bf                     | .I.[....</pre><a href="#appendix-C.4.3-4" class="pilcrow">¶</a>
 </div>
-<p id="section-c.4.3-5" class="keepWithNext">Decoding process:<a href="#section-c.4.3-5" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.4.3-6">
+<p id="appendix-C.4.3-5" class="keepWithNext">Decoding process:<a href="#appendix-C.4.3-5" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.4.3-6">
 <pre>
 82                                      | == Indexed - Add ==
                                         |   idx = 2
@@ -3896,61 +4059,61 @@ bf                                      | == Indexed - Add ==
                                         |     Decoded:
                                         | custom-value
                                         | -&gt; custom-key:
-                                        |   custom-value</pre><a href="#section-c.4.3-6" class="pilcrow">¶</a>
+                                        |   custom-value</pre><a href="#appendix-C.4.3-6" class="pilcrow">¶</a>
 </div>
-<p id="section-c.4.3-7" class="keepWithNext">Dynamic Table (after decoding):<a href="#section-c.4.3-7" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.4.3-8">
+<p id="appendix-C.4.3-7" class="keepWithNext">Dynamic Table (after decoding):<a href="#appendix-C.4.3-7" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.4.3-8">
 <pre>
 [  1] (s =  54) custom-key: custom-value
 [  2] (s =  53) cache-control: no-cache
 [  3] (s =  57) :authority: www.example.com
-      Table size: 164</pre><a href="#section-c.4.3-8" class="pilcrow">¶</a>
+      Table size: 164</pre><a href="#appendix-C.4.3-8" class="pilcrow">¶</a>
 </div>
-<p id="section-c.4.3-9" class="keepWithNext">Decoded header list:<a href="#section-c.4.3-9" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.4.3-10">
+<p id="appendix-C.4.3-9" class="keepWithNext">Decoded header list:<a href="#appendix-C.4.3-9" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.4.3-10">
 <pre>
 :method: GET
 :scheme: https
 :path: /index.html
 :authority: www.example.com
-custom-key: custom-value</pre><a href="#section-c.4.3-10" class="pilcrow">¶</a>
+custom-key: custom-value</pre><a href="#appendix-C.4.3-10" class="pilcrow">¶</a>
 </div>
 </section>
 </section>
 </div>
 <div id="response.examples.without.huffman.coding">
-<section id="section-c.5">
-        <h2 id="name-response-examples-without-h">
-<a href="#section-c.5" class="section-number selfRef">C.5. </a><a href="#name-response-examples-without-h" class="section-name selfRef">Response Examples without Huffman Coding</a>
-        </h2>
-<p id="section-c.5-1">
+<section id="appendix-C.5">
+        <h3 id="name-response-examples-without-h">
+<a href="#appendix-C.5" class="section-number selfRef">C.5. </a><a href="#name-response-examples-without-h" class="section-name selfRef">Response Examples without Huffman Coding</a>
+        </h3>
+<p id="appendix-C.5-1">
         This section shows several consecutive header lists, corresponding to
         HTTP responses, on the same connection. The HTTP/2 setting parameter
         SETTINGS_HEADER_TABLE_SIZE is set to the value of 256 octets, causing
-        some evictions to occur.<a href="#section-c.5-1" class="pilcrow">¶</a></p>
-<section id="section-c.5.1">
-          <h3 id="name-first-response">
-<a href="#section-c.5.1" class="section-number selfRef">C.5.1. </a><a href="#name-first-response" class="section-name selfRef">First Response</a>
-          </h3>
-<p id="section-c.5.1-1" class="keepWithNext">Header list to encode:<a href="#section-c.5.1-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.5.1-2">
+        some evictions to occur.<a href="#appendix-C.5-1" class="pilcrow">¶</a></p>
+<section id="appendix-C.5.1">
+          <h4 id="name-first-response">
+<a href="#appendix-C.5.1" class="section-number selfRef">C.5.1. </a><a href="#name-first-response" class="section-name selfRef">First Response</a>
+          </h4>
+<p id="appendix-C.5.1-1" class="keepWithNext">Header list to encode:<a href="#appendix-C.5.1-1" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.5.1-2">
 <pre>
 :status: 302
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:21 GMT
-location: https://www.example.com</pre><a href="#section-c.5.1-2" class="pilcrow">¶</a>
+location: https://www.example.com</pre><a href="#appendix-C.5.1-2" class="pilcrow">¶</a>
 </div>
-<p id="section-c.5.1-3" class="keepWithNext">Hex dump of encoded data:<a href="#section-c.5.1-3" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.5.1-4">
+<p id="appendix-C.5.1-3" class="keepWithNext">Hex dump of encoded data:<a href="#appendix-C.5.1-3" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.5.1-4">
 <pre>
 4803 3330 3258 0770 7269 7661 7465 611d | H.302X.privatea.
 4d6f 6e2c 2032 3120 4f63 7420 3230 3133 | Mon, 21 Oct 2013
 2032 303a 3133 3a32 3120 474d 546e 1768 |  20:13:21 GMTn.h
 7474 7073 3a2f 2f77 7777 2e65 7861 6d70 | ttps://www.examp
-6c65 2e63 6f6d                          | le.com</pre><a href="#section-c.5.1-4" class="pilcrow">¶</a>
+6c65 2e63 6f6d                          | le.com</pre><a href="#appendix-C.5.1-4" class="pilcrow">¶</a>
 </div>
-<p id="section-c.5.1-5" class="keepWithNext">Decoding process:<a href="#section-c.5.1-5" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.5.1-6">
+<p id="appendix-C.5.1-5" class="keepWithNext">Decoding process:<a href="#appendix-C.5.1-5" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.5.1-6">
 <pre>
 48                                      | == Literal indexed ==
                                         |   Indexed name (idx = 8)
@@ -3979,48 +4142,48 @@ location: https://www.example.com</pre><a href="#section-c.5.1-2" class="pilcrow
 6874 7470 733a 2f2f 7777 772e 6578 616d | https://www.exam
 706c 652e 636f 6d                       | ple.com
                                         | -&gt; location:
-                                        |   https://www.example.com</pre><a href="#section-c.5.1-6" class="pilcrow">¶</a>
+                                        |   https://www.example.com</pre><a href="#appendix-C.5.1-6" class="pilcrow">¶</a>
 </div>
-<p id="section-c.5.1-7" class="keepWithNext">Dynamic Table (after decoding):<a href="#section-c.5.1-7" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.5.1-8">
+<p id="appendix-C.5.1-7" class="keepWithNext">Dynamic Table (after decoding):<a href="#appendix-C.5.1-7" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.5.1-8">
 <pre>
 [  1] (s =  63) location: https://www.example.com
 [  2] (s =  65) date: Mon, 21 Oct 2013 20:13:21 GMT
 [  3] (s =  52) cache-control: private
 [  4] (s =  42) :status: 302
-      Table size: 222</pre><a href="#section-c.5.1-8" class="pilcrow">¶</a>
+      Table size: 222</pre><a href="#appendix-C.5.1-8" class="pilcrow">¶</a>
 </div>
-<p id="section-c.5.1-9" class="keepWithNext">Decoded header list:<a href="#section-c.5.1-9" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.5.1-10">
+<p id="appendix-C.5.1-9" class="keepWithNext">Decoded header list:<a href="#appendix-C.5.1-9" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.5.1-10">
 <pre>
 :status: 302
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:21 GMT
-location: https://www.example.com</pre><a href="#section-c.5.1-10" class="pilcrow">¶</a>
+location: https://www.example.com</pre><a href="#appendix-C.5.1-10" class="pilcrow">¶</a>
 </div>
 </section>
-<section id="section-c.5.2">
-          <h3 id="name-second-response">
-<a href="#section-c.5.2" class="section-number selfRef">C.5.2. </a><a href="#name-second-response" class="section-name selfRef">Second Response</a>
-          </h3>
-<p id="section-c.5.2-1">
+<section id="appendix-C.5.2">
+          <h4 id="name-second-response">
+<a href="#appendix-C.5.2" class="section-number selfRef">C.5.2. </a><a href="#name-second-response" class="section-name selfRef">Second Response</a>
+          </h4>
+<p id="appendix-C.5.2-1">
             The (":status", "302") header field is evicted from the dynamic table
-            to free space to allow adding the (":status", "307") header field.<a href="#section-c.5.2-1" class="pilcrow">¶</a></p>
-<p id="section-c.5.2-2" class="keepWithNext">Header list to encode:<a href="#section-c.5.2-2" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.5.2-3">
+            to free space to allow adding the (":status", "307") header field.<a href="#appendix-C.5.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-C.5.2-2" class="keepWithNext">Header list to encode:<a href="#appendix-C.5.2-2" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.5.2-3">
 <pre>
 :status: 307
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:21 GMT
-location: https://www.example.com</pre><a href="#section-c.5.2-3" class="pilcrow">¶</a>
+location: https://www.example.com</pre><a href="#appendix-C.5.2-3" class="pilcrow">¶</a>
 </div>
-<p id="section-c.5.2-4" class="keepWithNext">Hex dump of encoded data:<a href="#section-c.5.2-4" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.5.2-5">
+<p id="appendix-C.5.2-4" class="keepWithNext">Hex dump of encoded data:<a href="#appendix-C.5.2-4" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.5.2-5">
 <pre>
-4803 3330 37c1 c0bf                     | H.307...</pre><a href="#section-c.5.2-5" class="pilcrow">¶</a>
+4803 3330 37c1 c0bf                     | H.307...</pre><a href="#appendix-C.5.2-5" class="pilcrow">¶</a>
 </div>
-<p id="section-c.5.2-6" class="keepWithNext">Decoding process:<a href="#section-c.5.2-6" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.5.2-7">
+<p id="appendix-C.5.2-6" class="keepWithNext">Decoding process:<a href="#appendix-C.5.2-6" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.5.2-7">
 <pre>
 48                                      | == Literal indexed ==
                                         |   Indexed name (idx = 8)
@@ -4039,45 +4202,45 @@ c0                                      | == Indexed - Add ==
 bf                                      | == Indexed - Add ==
                                         |   idx = 63
                                         | -&gt; location:
-                                        |   https://www.example.com</pre><a href="#section-c.5.2-7" class="pilcrow">¶</a>
+                                        |   https://www.example.com</pre><a href="#appendix-C.5.2-7" class="pilcrow">¶</a>
 </div>
-<p id="section-c.5.2-8" class="keepWithNext">Dynamic Table (after decoding):<a href="#section-c.5.2-8" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.5.2-9">
+<p id="appendix-C.5.2-8" class="keepWithNext">Dynamic Table (after decoding):<a href="#appendix-C.5.2-8" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.5.2-9">
 <pre>
 [  1] (s =  42) :status: 307
 [  2] (s =  63) location: https://www.example.com
 [  3] (s =  65) date: Mon, 21 Oct 2013 20:13:21 GMT
 [  4] (s =  52) cache-control: private
-      Table size: 222</pre><a href="#section-c.5.2-9" class="pilcrow">¶</a>
+      Table size: 222</pre><a href="#appendix-C.5.2-9" class="pilcrow">¶</a>
 </div>
-<p id="section-c.5.2-10" class="keepWithNext">Decoded header list:<a href="#section-c.5.2-10" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.5.2-11">
+<p id="appendix-C.5.2-10" class="keepWithNext">Decoded header list:<a href="#appendix-C.5.2-10" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.5.2-11">
 <pre>
 :status: 307
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:21 GMT
-location: https://www.example.com</pre><a href="#section-c.5.2-11" class="pilcrow">¶</a>
+location: https://www.example.com</pre><a href="#appendix-C.5.2-11" class="pilcrow">¶</a>
 </div>
 </section>
-<section id="section-c.5.3">
-          <h3 id="name-third-response">
-<a href="#section-c.5.3" class="section-number selfRef">C.5.3. </a><a href="#name-third-response" class="section-name selfRef">Third Response</a>
-          </h3>
-<p id="section-c.5.3-1">
+<section id="appendix-C.5.3">
+          <h4 id="name-third-response">
+<a href="#appendix-C.5.3" class="section-number selfRef">C.5.3. </a><a href="#name-third-response" class="section-name selfRef">Third Response</a>
+          </h4>
+<p id="appendix-C.5.3-1">
             Several header fields are evicted from the dynamic table during the
-            processing of this header list.<a href="#section-c.5.3-1" class="pilcrow">¶</a></p>
-<p id="section-c.5.3-2" class="keepWithNext">Header list to encode:<a href="#section-c.5.3-2" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.5.3-3">
+            processing of this header list.<a href="#appendix-C.5.3-1" class="pilcrow">¶</a></p>
+<p id="appendix-C.5.3-2" class="keepWithNext">Header list to encode:<a href="#appendix-C.5.3-2" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.5.3-3">
 <pre>
 :status: 200
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:22 GMT
 location: https://www.example.com
 content-encoding: gzip
-set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age=3600; version=1</pre><a href="#section-c.5.3-3" class="pilcrow">¶</a>
+set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age=3600; version=1</pre><a href="#appendix-C.5.3-3" class="pilcrow">¶</a>
 </div>
-<p id="section-c.5.3-4" class="keepWithNext">Hex dump of encoded data:<a href="#section-c.5.3-4" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.5.3-5">
+<p id="appendix-C.5.3-4" class="keepWithNext">Hex dump of encoded data:<a href="#appendix-C.5.3-4" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.5.3-5">
 <pre>
 88c1 611d 4d6f 6e2c 2032 3120 4f63 7420 | ..a.Mon, 21 Oct
 3230 3133 2032 303a 3133 3a32 3220 474d | 2013 20:13:22 GM
@@ -4085,10 +4248,10 @@ set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age=3600; version=1</pre><a hre
 444a 4b48 514b 425a 584f 5157 454f 5049 | DJKHQKBZXOQWEOPI
 5541 5851 5745 4f49 553b 206d 6178 2d61 | UAXQWEOIU; max-a
 6765 3d33 3630 303b 2076 6572 7369 6f6e | ge=3600; version
-3d31                                    | =1</pre><a href="#section-c.5.3-5" class="pilcrow">¶</a>
+3d31                                    | =1</pre><a href="#appendix-C.5.3-5" class="pilcrow">¶</a>
 </div>
-<p id="section-c.5.3-6" class="keepWithNext">Decoding process:<a href="#section-c.5.3-6" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.5.3-7">
+<p id="appendix-C.5.3-6" class="keepWithNext">Decoding process:<a href="#appendix-C.5.3-6" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.5.3-7">
 <pre>
 88                                      | == Indexed - Add ==
                                         |   idx = 8
@@ -4131,64 +4294,64 @@ c0                                      | == Indexed - Add ==
                                         | - evict: :status: 307
                                         | -&gt; set-cookie: foo=ASDJKHQ
                                         |   KBZXOQWEOPIUAXQWEOIU; ma
-                                        |   x-age=3600; version=1</pre><a href="#section-c.5.3-7" class="pilcrow">¶</a>
+                                        |   x-age=3600; version=1</pre><a href="#appendix-C.5.3-7" class="pilcrow">¶</a>
 </div>
-<p id="section-c.5.3-8" class="keepWithNext">Dynamic Table (after decoding):<a href="#section-c.5.3-8" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.5.3-9">
+<p id="appendix-C.5.3-8" class="keepWithNext">Dynamic Table (after decoding):<a href="#appendix-C.5.3-8" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.5.3-9">
 <pre>
 [  1] (s =  98) set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU;
                  max-age=3600; version=1
 [  2] (s =  52) content-encoding: gzip
 [  3] (s =  65) date: Mon, 21 Oct 2013 20:13:22 GMT
-      Table size: 215</pre><a href="#section-c.5.3-9" class="pilcrow">¶</a>
+      Table size: 215</pre><a href="#appendix-C.5.3-9" class="pilcrow">¶</a>
 </div>
-<p id="section-c.5.3-10" class="keepWithNext">Decoded header list:<a href="#section-c.5.3-10" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.5.3-11">
+<p id="appendix-C.5.3-10" class="keepWithNext">Decoded header list:<a href="#appendix-C.5.3-10" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.5.3-11">
 <pre>
 :status: 200
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:22 GMT
 location: https://www.example.com
 content-encoding: gzip
-set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age=3600; version=1</pre><a href="#section-c.5.3-11" class="pilcrow">¶</a>
+set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age=3600; version=1</pre><a href="#appendix-C.5.3-11" class="pilcrow">¶</a>
 </div>
 </section>
 </section>
 </div>
 <div id="response.examples.with.huffman.coding">
-<section id="section-c.6">
-        <h2 id="name-response-examples-with-huff">
-<a href="#section-c.6" class="section-number selfRef">C.6. </a><a href="#name-response-examples-with-huff" class="section-name selfRef">Response Examples with Huffman Coding</a>
-        </h2>
-<p id="section-c.6-1">
+<section id="appendix-C.6">
+        <h3 id="name-response-examples-with-huff">
+<a href="#appendix-C.6" class="section-number selfRef">C.6. </a><a href="#name-response-examples-with-huff" class="section-name selfRef">Response Examples with Huffman Coding</a>
+        </h3>
+<p id="appendix-C.6-1">
         This section shows the same examples as the previous section but uses
         Huffman encoding for the literal values. The HTTP/2 setting parameter
         SETTINGS_HEADER_TABLE_SIZE is set to the value of 256 octets, causing
         some evictions to occur. The eviction mechanism uses the length of the
         decoded literal values, so the same evictions occur as in the previous
-        section.<a href="#section-c.6-1" class="pilcrow">¶</a></p>
-<section id="section-c.6.1">
-          <h3 id="name-first-response-2">
-<a href="#section-c.6.1" class="section-number selfRef">C.6.1. </a><a href="#name-first-response-2" class="section-name selfRef">First Response</a>
-          </h3>
-<p id="section-c.6.1-1" class="keepWithNext">Header list to encode:<a href="#section-c.6.1-1" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.6.1-2">
+        section.<a href="#appendix-C.6-1" class="pilcrow">¶</a></p>
+<section id="appendix-C.6.1">
+          <h4 id="name-first-response-2">
+<a href="#appendix-C.6.1" class="section-number selfRef">C.6.1. </a><a href="#name-first-response-2" class="section-name selfRef">First Response</a>
+          </h4>
+<p id="appendix-C.6.1-1" class="keepWithNext">Header list to encode:<a href="#appendix-C.6.1-1" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.6.1-2">
 <pre>
 :status: 302
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:21 GMT
-location: https://www.example.com</pre><a href="#section-c.6.1-2" class="pilcrow">¶</a>
+location: https://www.example.com</pre><a href="#appendix-C.6.1-2" class="pilcrow">¶</a>
 </div>
-<p id="section-c.6.1-3" class="keepWithNext">Hex dump of encoded data:<a href="#section-c.6.1-3" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.6.1-4">
+<p id="appendix-C.6.1-3" class="keepWithNext">Hex dump of encoded data:<a href="#appendix-C.6.1-3" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.6.1-4">
 <pre>
 4882 6402 5885 aec3 771a 4b61 96d0 7abe | H.d.X...w.Ka..z.
 9410 54d4 44a8 2005 9504 0b81 66e0 82a6 | ..T.D. .....f...
 2d1b ff6e 919d 29ad 1718 63c7 8f0b 97c8 | -..n..)...c.....
-e9ae 82ae 43d3                          | ....C.</pre><a href="#section-c.6.1-4" class="pilcrow">¶</a>
+e9ae 82ae 43d3                          | ....C.</pre><a href="#appendix-C.6.1-4" class="pilcrow">¶</a>
 </div>
-<p id="section-c.6.1-5" class="keepWithNext">Decoding process:<a href="#section-c.6.1-5" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.6.1-6">
+<p id="appendix-C.6.1-5" class="keepWithNext">Decoding process:<a href="#appendix-C.6.1-5" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.6.1-6">
 <pre>
 48                                      | == Literal indexed ==
                                         |   Indexed name (idx = 8)
@@ -4230,48 +4393,48 @@ d3                                      | .
                                         |     Decoded:
                                         | https://www.example.com
                                         | -&gt; location:
-                                        |   https://www.example.com</pre><a href="#section-c.6.1-6" class="pilcrow">¶</a>
+                                        |   https://www.example.com</pre><a href="#appendix-C.6.1-6" class="pilcrow">¶</a>
 </div>
-<p id="section-c.6.1-7" class="keepWithNext">Dynamic Table (after decoding):<a href="#section-c.6.1-7" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.6.1-8">
+<p id="appendix-C.6.1-7" class="keepWithNext">Dynamic Table (after decoding):<a href="#appendix-C.6.1-7" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.6.1-8">
 <pre>
 [  1] (s =  63) location: https://www.example.com
 [  2] (s =  65) date: Mon, 21 Oct 2013 20:13:21 GMT
 [  3] (s =  52) cache-control: private
 [  4] (s =  42) :status: 302
-      Table size: 222</pre><a href="#section-c.6.1-8" class="pilcrow">¶</a>
+      Table size: 222</pre><a href="#appendix-C.6.1-8" class="pilcrow">¶</a>
 </div>
-<p id="section-c.6.1-9" class="keepWithNext">Decoded header list:<a href="#section-c.6.1-9" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.6.1-10">
+<p id="appendix-C.6.1-9" class="keepWithNext">Decoded header list:<a href="#appendix-C.6.1-9" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.6.1-10">
 <pre>
 :status: 302
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:21 GMT
-location: https://www.example.com</pre><a href="#section-c.6.1-10" class="pilcrow">¶</a>
+location: https://www.example.com</pre><a href="#appendix-C.6.1-10" class="pilcrow">¶</a>
 </div>
 </section>
-<section id="section-c.6.2">
-          <h3 id="name-second-response-2">
-<a href="#section-c.6.2" class="section-number selfRef">C.6.2. </a><a href="#name-second-response-2" class="section-name selfRef">Second Response</a>
-          </h3>
-<p id="section-c.6.2-1">
+<section id="appendix-C.6.2">
+          <h4 id="name-second-response-2">
+<a href="#appendix-C.6.2" class="section-number selfRef">C.6.2. </a><a href="#name-second-response-2" class="section-name selfRef">Second Response</a>
+          </h4>
+<p id="appendix-C.6.2-1">
             The (":status", "302") header field is evicted from the dynamic table
-            to free space to allow adding the (":status", "307") header field.<a href="#section-c.6.2-1" class="pilcrow">¶</a></p>
-<p id="section-c.6.2-2" class="keepWithNext">Header list to encode:<a href="#section-c.6.2-2" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.6.2-3">
+            to free space to allow adding the (":status", "307") header field.<a href="#appendix-C.6.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-C.6.2-2" class="keepWithNext">Header list to encode:<a href="#appendix-C.6.2-2" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.6.2-3">
 <pre>
 :status: 307
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:21 GMT
-location: https://www.example.com</pre><a href="#section-c.6.2-3" class="pilcrow">¶</a>
+location: https://www.example.com</pre><a href="#appendix-C.6.2-3" class="pilcrow">¶</a>
 </div>
-<p id="section-c.6.2-4" class="keepWithNext">Hex dump of encoded data:<a href="#section-c.6.2-4" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.6.2-5">
+<p id="appendix-C.6.2-4" class="keepWithNext">Hex dump of encoded data:<a href="#appendix-C.6.2-4" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.6.2-5">
 <pre>
-4883 640e ffc1 c0bf                     | H.d.....</pre><a href="#section-c.6.2-5" class="pilcrow">¶</a>
+4883 640e ffc1 c0bf                     | H.d.....</pre><a href="#appendix-C.6.2-5" class="pilcrow">¶</a>
 </div>
-<p id="section-c.6.2-6" class="keepWithNext">Decoding process:<a href="#section-c.6.2-6" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.6.2-7">
+<p id="appendix-C.6.2-6" class="keepWithNext">Decoding process:<a href="#appendix-C.6.2-6" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.6.2-7">
 <pre>
 48                                      | == Literal indexed ==
                                         |   Indexed name (idx = 8)
@@ -4293,54 +4456,54 @@ c0                                      | == Indexed - Add ==
 bf                                      | == Indexed - Add ==
                                         |   idx = 63
                                         | -&gt; location:
-                                        |   https://www.example.com</pre><a href="#section-c.6.2-7" class="pilcrow">¶</a>
+                                        |   https://www.example.com</pre><a href="#appendix-C.6.2-7" class="pilcrow">¶</a>
 </div>
-<p id="section-c.6.2-8" class="keepWithNext">Dynamic Table (after decoding):<a href="#section-c.6.2-8" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.6.2-9">
+<p id="appendix-C.6.2-8" class="keepWithNext">Dynamic Table (after decoding):<a href="#appendix-C.6.2-8" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.6.2-9">
 <pre>
 [  1] (s =  42) :status: 307
 [  2] (s =  63) location: https://www.example.com
 [  3] (s =  65) date: Mon, 21 Oct 2013 20:13:21 GMT
 [  4] (s =  52) cache-control: private
-      Table size: 222</pre><a href="#section-c.6.2-9" class="pilcrow">¶</a>
+      Table size: 222</pre><a href="#appendix-C.6.2-9" class="pilcrow">¶</a>
 </div>
-<p id="section-c.6.2-10" class="keepWithNext">Decoded header list:<a href="#section-c.6.2-10" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.6.2-11">
+<p id="appendix-C.6.2-10" class="keepWithNext">Decoded header list:<a href="#appendix-C.6.2-10" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.6.2-11">
 <pre>
 :status: 307
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:21 GMT
-location: https://www.example.com</pre><a href="#section-c.6.2-11" class="pilcrow">¶</a>
+location: https://www.example.com</pre><a href="#appendix-C.6.2-11" class="pilcrow">¶</a>
 </div>
 </section>
-<section id="section-c.6.3">
-          <h3 id="name-third-response-2">
-<a href="#section-c.6.3" class="section-number selfRef">C.6.3. </a><a href="#name-third-response-2" class="section-name selfRef">Third Response</a>
-          </h3>
-<p id="section-c.6.3-1">
+<section id="appendix-C.6.3">
+          <h4 id="name-third-response-2">
+<a href="#appendix-C.6.3" class="section-number selfRef">C.6.3. </a><a href="#name-third-response-2" class="section-name selfRef">Third Response</a>
+          </h4>
+<p id="appendix-C.6.3-1">
             Several header fields are evicted from the dynamic table during the
-            processing of this header list.<a href="#section-c.6.3-1" class="pilcrow">¶</a></p>
-<p id="section-c.6.3-2" class="keepWithNext">Header list to encode:<a href="#section-c.6.3-2" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.6.3-3">
+            processing of this header list.<a href="#appendix-C.6.3-1" class="pilcrow">¶</a></p>
+<p id="appendix-C.6.3-2" class="keepWithNext">Header list to encode:<a href="#appendix-C.6.3-2" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.6.3-3">
 <pre>
 :status: 200
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:22 GMT
 location: https://www.example.com
 content-encoding: gzip
-set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age=3600; version=1</pre><a href="#section-c.6.3-3" class="pilcrow">¶</a>
+set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age=3600; version=1</pre><a href="#appendix-C.6.3-3" class="pilcrow">¶</a>
 </div>
-<p id="section-c.6.3-4" class="keepWithNext">Hex dump of encoded data:<a href="#section-c.6.3-4" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.6.3-5">
+<p id="appendix-C.6.3-4" class="keepWithNext">Hex dump of encoded data:<a href="#appendix-C.6.3-4" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.6.3-5">
 <pre>
 88c1 6196 d07a be94 1054 d444 a820 0595 | ..a..z...T.D. ..
 040b 8166 e084 a62d 1bff c05a 839b d9ab | ...f...-...Z....
 77ad 94e7 821d d7f2 e6c7 b335 dfdf cd5b | w..........5...[
 3960 d5af 2708 7f36 72c1 ab27 0fb5 291f | 9`..'..6r..'..).
-9587 3160 65c0 03ed 4ee5 b106 3d50 07   | ..1`e...N...=P.</pre><a href="#section-c.6.3-5" class="pilcrow">¶</a>
+9587 3160 65c0 03ed 4ee5 b106 3d50 07   | ..1`e...N...=P.</pre><a href="#appendix-C.6.3-5" class="pilcrow">¶</a>
 </div>
-<p id="section-c.6.3-6" class="keepWithNext">Decoding process:<a href="#section-c.6.3-6" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.6.3-7">
+<p id="appendix-C.6.3-6" class="keepWithNext">Decoding process:<a href="#appendix-C.6.3-6" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.6.3-7">
 <pre>
 88                                      | == Indexed - Add ==
                                         |   idx = 8
@@ -4394,51 +4557,51 @@ d5af 2708 7f36 72c1 ab27 0fb5 291f 9587 | ..'..6r..'..)...
                                         | - evict: :status: 307
                                         | -&gt; set-cookie: foo=ASDJKHQ
                                         |   KBZXOQWEOPIUAXQWEOIU; ma
-                                        |   x-age=3600; version=1</pre><a href="#section-c.6.3-7" class="pilcrow">¶</a>
+                                        |   x-age=3600; version=1</pre><a href="#appendix-C.6.3-7" class="pilcrow">¶</a>
 </div>
-<p id="section-c.6.3-8" class="keepWithNext">Dynamic Table (after decoding):<a href="#section-c.6.3-8" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.6.3-9">
+<p id="appendix-C.6.3-8" class="keepWithNext">Dynamic Table (after decoding):<a href="#appendix-C.6.3-8" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.6.3-9">
 <pre>
 [  1] (s =  98) set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU;
                  max-age=3600; version=1
 [  2] (s =  52) content-encoding: gzip
 [  3] (s =  65) date: Mon, 21 Oct 2013 20:13:22 GMT
-      Table size: 215</pre><a href="#section-c.6.3-9" class="pilcrow">¶</a>
+      Table size: 215</pre><a href="#appendix-C.6.3-9" class="pilcrow">¶</a>
 </div>
-<p id="section-c.6.3-10" class="keepWithNext">Decoded header list:<a href="#section-c.6.3-10" class="pilcrow">¶</a></p>
-<div class="artwork art-text alignLeft art-example" id="section-c.6.3-11">
+<p id="appendix-C.6.3-10" class="keepWithNext">Decoded header list:<a href="#appendix-C.6.3-10" class="pilcrow">¶</a></p>
+<div class="artwork art-text alignLeft art-example" id="appendix-C.6.3-11">
 <pre>
 :status: 200
 cache-control: private
 date: Mon, 21 Oct 2013 20:13:22 GMT
 location: https://www.example.com
 content-encoding: gzip
-set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age=3600; version=1</pre><a href="#section-c.6.3-11" class="pilcrow">¶</a>
+set-cookie: foo=ASDJKHQKBZXOQWEOPIUAXQWEOIU; max-age=3600; version=1</pre><a href="#appendix-C.6.3-11" class="pilcrow">¶</a>
 </div>
 </section>
 </section>
 </div>
 </section>
 </div>
-<section id="section-appendix.d">
+<section id="appendix-D">
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="section-appendix.d-1">
+<p id="appendix-D-1">
                 This specification includes substantial input from the following
-                individuals:<a href="#section-appendix.d-1" class="pilcrow">¶</a></p>
+                individuals:<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-appendix.d-2.1">
+<li class="normal" id="appendix-D-2.1">
                         Mike Bishop, Jeff Pinner, Julian Reschke, and Martin Thomson
-                        (substantial editorial contributions).<a href="#section-appendix.d-2.1" class="pilcrow">¶</a>
+                        (substantial editorial contributions).<a href="#appendix-D-2.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-appendix.d-2.2">
-                        Johnny Graettinger (Huffman code statistics).<a href="#section-appendix.d-2.2" class="pilcrow">¶</a>
+        <li class="normal" id="appendix-D-2.2">
+                        Johnny Graettinger (Huffman code statistics).<a href="#appendix-D-2.2" class="pilcrow">¶</a>
 </li>
       </ul>
 </section>
 <div id="authors-addresses">
-<section id="section-appendix.e">
+<section id="appendix-E">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
